@@ -1,0 +1,230 @@
+/* =====================================================================
+   TRASTES · Página de detalle — Curso Guitarra Criolla
+   Depende de styles.css (variables, .nav, .btn, .tag, .ph, .qa, reveal…)
+   ===================================================================== */
+
+/* imágenes de la página (reutiliza fotos del taller) */
+.ph--cd-method{background:url("../assets/individual.jpg") center/cover no-repeat}
+.ph--cd-master{background:url("../assets/maestro.jpg") center/cover no-repeat}
+
+/* ---------------- 1 · HERO (sobrio, una columna) ---------------- */
+.cd-hero{
+  display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:stretch;
+  min-height:100vh;padding:6rem var(--gut) 3rem;
+  border-bottom:.5px solid var(--line);
+}
+.cd-hero__text{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:1.2rem}
+.cd-back{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);transition:opacity .3s}
+.cd-back:hover{opacity:.6}
+.cd-hero__title{font-weight:700;font-size:clamp(2.2rem,4.6vw,4.2rem);line-height:1.02;letter-spacing:-.04em;max-width:16ch}
+.cd-hero__title em{color:var(--accent)}
+.cd-hero__lead{max-width:46ch;font-size:1rem;opacity:.9}
+.cd-hero__lead em{color:var(--accent);font-style:italic}
+.cd-hero__actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:.3rem}
+
+/* --- media escalonada (con hueco entre imágenes) + planos técnicos --- */
+.cd-hero__media{position:relative;min-height:74vh}
+.cd-himg{position:absolute;background-size:cover;background-position:center;border-radius:2px;box-shadow:0 18px 40px -20px rgba(42,16,5,.5)}
+.cd-himg--top{top:2%;left:0;width:60%;height:44%;background-image:url("../assets/hero_curso.jpg")}
+.cd-himg--bot{top:56%;right:0;width:58%;height:44%;background-image:url("../assets/hero_curso_2.jpg")}
+/* líneas técnicas 0.5px */
+.cd-tline{position:absolute;background:var(--line)}
+.cd-tline--h1{top:2%;left:-2rem;right:6%;height:.5px}
+.cd-tline--h2{top:100%;left:12%;right:-2rem;height:.5px}
+.cd-tline--v1{top:0;bottom:0;right:6%;width:.5px}
+/* nodos y anotaciones */
+.cd-dot{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--violet);z-index:4}
+.cd-dot--1{top:calc(2% - 3px);left:0}
+.cd-dot--2{top:calc(56% - 3px);right:0}
+.cd-anno{position:absolute;z-index:4;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--espresso);opacity:.75;white-space:nowrap}
+.cd-anno b{color:var(--accent);font-weight:700}
+.cd-anno--1{top:calc(2% - 1.3rem);left:0}
+.cd-anno--2{top:calc(56% - 1.3rem);right:0;text-align:right}
+.cd-anno--esc{top:calc(100% + .4rem);left:12.5%}
+
+/* ---------------- FICHA DEL CURSO ---------------- */
+.cd-ficha{
+  display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;
+  padding:1.6rem var(--gut);border-bottom:.5px solid var(--line);
+}
+.cd-ficha__label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet);line-height:1.4}
+.cd-ficha__grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.cd-ficha__grid>div{border-left:.5px solid var(--line);padding-left:1.2rem}
+.cd-ficha__grid b{display:block;font-size:clamp(1.2rem,2vw,1.6rem);color:var(--violet);letter-spacing:-.02em}
+.cd-ficha__grid span{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+.cd-ficha__price b{color:var(--accent)}
+
+/* ---------------- 2 · TRANSFORMACIÓN ---------------- */
+.cd-promise{padding:calc(var(--gut) + 1rem) var(--gut);border-bottom:.5px solid var(--line);display:flex;flex-direction:column;gap:2rem}
+.cd-promise>.tag{align-self:flex-start}
+.cd-promise .section-title em{color:var(--accent)}
+.cd-promise__grid{display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:center}
+.cd-transform{border:.5px solid var(--line);padding:2rem;min-height:200px;display:flex;flex-direction:column;gap:1rem}
+.cd-transform--after{background:var(--espresso);color:var(--cream);border-color:var(--espresso)}
+.cd-transform__stage{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet)}
+.cd-transform--after .cd-transform__stage{color:var(--accent)}
+.cd-transform p{font-size:1.05rem;line-height:1.5}
+.cd-transform__arrow{font-size:2.5rem;color:var(--accent);text-align:center}
+
+/* ---------------- 3 · PARA QUIÉN ---------------- */
+.cd-audience{border-bottom:.5px solid var(--line)}
+.cd-audience__head{padding:var(--gut);display:flex;flex-direction:column;align-items:flex-start;gap:1.2rem;border-bottom:.5px solid var(--line)}
+.cd-audience__intro{max-width:60ch;font-size:.98rem;opacity:.9}
+.cd-audience__cols{display:grid;grid-template-columns:1fr 1fr}
+.cd-list{padding:var(--gut)}
+.cd-list--yes{border-right:.5px solid var(--line)}
+.cd-list h3{font-size:1.15rem;margin-bottom:1.2rem;letter-spacing:-.02em}
+.cd-list ul{list-style:none;display:flex;flex-direction:column;gap:.9rem}
+.cd-list li{font-size:.92rem;padding-left:1.6rem;position:relative;line-height:1.45}
+.cd-list--yes li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
+.cd-list--no li{opacity:.7}
+.cd-list--no li::before{content:"—";position:absolute;left:0;color:var(--espresso)}
+
+/* ---------------- 4 · TEMARIO ---------------- */
+.cd-syllabus{border-bottom:.5px solid var(--line)}
+.cd-syllabus__head{padding:var(--gut);display:flex;flex-direction:column;align-items:flex-start;gap:1.2rem;border-bottom:.5px solid var(--line)}
+.cd-syllabus__head .section-title em{color:var(--accent)}
+.cd-syllabus__intro{max-width:60ch;font-size:.98rem;opacity:.9}
+.cd-module{border-bottom:.5px solid var(--line)}
+.cd-module__head{
+  width:100%;display:grid;grid-template-columns:auto 1fr auto auto;gap:1.2rem;align-items:center;
+  background:none;border:none;cursor:pointer;font-family:inherit;color:inherit;text-align:left;
+  padding:1.6rem var(--gut);transition:background .35s,color .35s;
+}
+.cd-module__head:hover{background:var(--espresso);color:var(--cream)}
+.cd-module__fase{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet)}
+.cd-module__head:hover .cd-module__fase{color:var(--accent)}
+.cd-module__title{font-size:clamp(1.1rem,2.2vw,1.7rem);font-weight:700;letter-spacing:-.02em}
+.cd-module__range{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
+.cd-module__icon{font-size:1.6rem;transition:transform .35s var(--ease)}
+.cd-module.is-open .cd-module__icon{transform:rotate(45deg);color:var(--accent)}
+.cd-module__body{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+.cd-module.is-open .cd-module__body{max-height:600px}
+.cd-classes{list-style:none;padding:0 var(--gut) 1.5rem}
+.cd-classes li{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;padding:1rem 0;border-top:.5px solid var(--line);align-items:baseline}
+.cd-class__n{font-size:1.3rem;font-weight:700;color:var(--accent);letter-spacing:-.03em}
+.cd-classes h4{font-size:1rem;letter-spacing:-.01em}
+.cd-classes p{font-size:.85rem;opacity:.82;margin-top:.2rem}
+
+/* ---------------- 5 · METODOLOGÍA ---------------- */
+.cd-method{display:grid;grid-template-columns:.9fr 1.1fr;border-bottom:.5px solid var(--line)}
+.cd-method__media{position:relative;border-right:.5px solid var(--line);min-height:420px}
+.cd-method__media .ph{position:absolute;inset:0}
+.cd-method__text{padding:calc(var(--gut) + .5rem) var(--gut);display:flex;flex-direction:column;align-items:flex-start;gap:1.2rem;justify-content:center}
+.cd-method__text .section-title em{color:var(--accent)}
+.cd-method__text>p{max-width:48ch}
+.cd-method__points{list-style:none;display:flex;flex-direction:column;gap:.9rem;width:100%}
+.cd-method__points li{font-size:.92rem;padding-left:1.4rem;position:relative;line-height:1.5}
+.cd-method__points li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;background:var(--violet)}
+.cd-method__points b{color:var(--espresso)}
+
+/* ---------------- 6 · QUÉ INCLUYE ---------------- */
+.cd-includes{border-bottom:.5px solid var(--line)}
+.cd-includes__head{padding:var(--gut);display:flex;flex-direction:column;align-items:flex-start;gap:1.2rem;border-bottom:.5px solid var(--line)}
+.cd-includes__head .section-title em{color:var(--accent)}
+.cd-includes__grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.cd-inc{padding:2.2rem 1.6rem;border-right:.5px solid var(--line);display:flex;flex-direction:column;gap:.9rem;transition:background .4s}
+.cd-inc:last-child{border-right:none}
+.cd-inc:hover{background:rgba(255,80,0,.05)}
+.cd-inc__n{font-size:.8rem;color:var(--violet);letter-spacing:.15em}
+.cd-inc h3{font-size:1.05rem;line-height:1.2;letter-spacing:-.02em}
+.cd-inc p{font-size:.85rem;opacity:.85}
+
+/* ---------------- 7 · EL MAESTRO ---------------- */
+.cd-master{display:grid;grid-template-columns:1.1fr .9fr;border-bottom:.5px solid var(--line)}
+.cd-master__text{padding:calc(var(--gut) + .5rem) var(--gut);display:flex;flex-direction:column;align-items:flex-start;gap:1.2rem;justify-content:center;border-right:.5px solid var(--line)}
+.cd-master__text .section-title em{color:var(--accent)}
+.cd-master__text>p{max-width:50ch}
+.cd-master__stats{display:flex;gap:1.8rem;flex-wrap:wrap;border-top:.5px solid var(--line);padding-top:1.2rem}
+.cd-master__stats b{display:block;font-size:1.7rem;color:var(--accent)}
+.cd-master__stats span{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+.cd-master__media{position:relative;min-height:420px}
+.cd-master__media .ph{position:absolute;inset:0}
+
+/* ---------------- 8 · TESTIMONIOS ---------------- */
+.cd-reviews{padding:calc(var(--gut) + 1rem) var(--gut);border-bottom:.5px solid var(--line);display:flex;flex-direction:column;gap:2rem}
+.cd-reviews>.tag{align-self:flex-start}
+.cd-reviews .section-title em{color:var(--accent)}
+.cd-reviews__grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.cd-review{border:.5px solid var(--line);padding:2rem;display:flex;flex-direction:column;gap:1.1rem}
+.cd-review__stars{color:var(--accent);font-size:1.1rem;letter-spacing:.2em}
+.cd-review blockquote{font-size:clamp(1.05rem,1.8vw,1.35rem);line-height:1.45}
+.cd-review figcaption{font-size:.85rem;font-weight:700;border-top:.5px solid var(--line);padding-top:.9rem}
+.cd-review figcaption span{display:block;font-weight:400;opacity:.65;font-size:.72rem;margin-top:.2rem}
+
+/* ---------------- 9 · GARANTÍA ---------------- */
+.cd-guarantee{background:var(--espresso);color:var(--cream);border-bottom:.5px solid var(--line)}
+.cd-guarantee__inner{padding:calc(var(--gut) + 1.5rem) var(--gut);display:flex;flex-direction:column;align-items:flex-start;gap:1.5rem}
+.cd-guarantee .tag{color:var(--cream);border-color:rgba(250,246,238,.45)}
+.cd-guarantee__cols{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:.5rem}
+.cd-guarantee__cols p{font-size:.98rem;line-height:1.6;opacity:.9;max-width:46ch}
+.cd-guarantee__cols b{color:var(--accent);opacity:1}
+
+/* ---------------- 10 · PRECIO ---------------- */
+.cd-pricing{border-bottom:.5px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:0}
+.cd-pricing__head{padding:calc(var(--gut) + .5rem) var(--gut);display:flex;flex-direction:column;align-items:flex-start;gap:1.2rem;justify-content:center;border-right:.5px solid var(--line)}
+.cd-pricing__head p{max-width:42ch}
+.cd-pricing__head em{color:var(--accent);font-style:italic}
+.cd-price-card{margin:var(--gut);border:.5px solid var(--line-strong);display:flex;flex-direction:column;padding:2rem}
+.cd-price-card__top{display:flex;flex-direction:column;gap:1rem;border-bottom:.5px solid var(--line);padding-bottom:1.3rem}
+.cd-price-card__tag{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--violet)}
+.cd-price-card__amount b{font-size:clamp(2.2rem,5vw,3.2rem);font-weight:700;letter-spacing:-.04em;color:var(--accent);display:block;line-height:1}
+.cd-price-card__amount span{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+.cd-price-card__list{list-style:none;display:flex;flex-direction:column;gap:.7rem;padding:1.3rem 0}
+.cd-price-card__list li{font-size:.88rem;padding-left:1.5rem;position:relative}
+.cd-price-card__list li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
+.cd-price-card__btn{text-align:center;margin-top:.4rem}
+.cd-price-card__note{font-size:.72rem;opacity:.65;text-align:center;margin-top:.9rem}
+
+/* ---------------- 11 · FAQ ---------------- */
+.cd-faq{border-bottom:.5px solid var(--line)}
+.cd-faq__head{padding:var(--gut);display:flex;flex-direction:column;align-items:flex-start;gap:1.2rem;border-bottom:.5px solid var(--line)}
+.cd-faq__list{border-top:none}
+
+/* ---------------- 12 · CTA / CONTACTO ---------------- */
+.cd-cta{background:var(--accent);color:var(--espresso)}
+.cd-cta__inner{padding:clamp(3rem,7vw,6rem) var(--gut);display:flex;flex-direction:column;align-items:flex-start;gap:1.3rem;max-width:820px}
+.cd-cta .tag{border-color:rgba(42,16,5,.4)}
+.cd-cta__title{font-size:clamp(2.2rem,6vw,5rem);font-weight:700;line-height:1;letter-spacing:-.05em}
+.cd-cta__title em{color:var(--cream)}
+.cd-cta__inner>p{max-width:52ch}
+.cd-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem;width:100%;margin-top:1rem}
+.cd-form label{display:flex;flex-direction:column;gap:.35rem;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
+.cd-form__wide{grid-column:1/-1}
+.cd-form input,.cd-form textarea{
+  font-family:inherit;font-size:.92rem;padding:.7rem;border:.5px solid var(--espresso);
+  background:var(--cream);color:var(--espresso);border-radius:2px;text-transform:none;letter-spacing:0;resize:vertical;
+}
+.cd-form input:focus,.cd-form textarea:focus{outline:2px solid var(--espresso);outline-offset:1px}
+.cd-form__submit{grid-column:1/-1;justify-self:start}
+.cd-form__done{background:var(--espresso);color:var(--cream);padding:1.2rem;font-size:.92rem;max-width:60ch}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media(max-width:1000px){
+  .cd-hero{grid-template-columns:1fr;min-height:auto;gap:2.5rem}
+  .cd-hero__media{min-height:58vh;margin-top:.5rem}
+  .cd-ficha{grid-template-columns:1fr;gap:1rem}
+  .cd-ficha__grid{grid-template-columns:1fr 1fr;gap:1rem 0}
+  .cd-promise__grid{grid-template-columns:1fr}
+  .cd-transform__arrow{transform:rotate(90deg)}
+  .cd-method,.cd-master,.cd-pricing{grid-template-columns:1fr}
+  .cd-method__media,.cd-master__media{min-height:320px}
+  .cd-method__media,.cd-master__text,.cd-pricing__head{border-right:none;border-bottom:.5px solid var(--line)}
+  .cd-includes__grid{grid-template-columns:1fr 1fr}
+  .cd-inc:nth-child(2n){border-right:none}
+  .cd-inc{border-bottom:.5px solid var(--line)}
+  .cd-guarantee__cols,.cd-reviews__grid{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .cd-audience__cols{grid-template-columns:1fr}
+  .cd-list--yes{border-right:none;border-bottom:.5px solid var(--line)}
+  .cd-includes__grid{grid-template-columns:1fr}
+  .cd-inc{border-right:none}
+  .cd-module__head{grid-template-columns:1fr auto;gap:.5rem}
+  .cd-module__range{display:none}
+  .cd-form{grid-template-columns:1fr}
+  /* hero: apilar imágenes y ocultar overlay técnico */
+  .cd-hero__media{display:flex;flex-direction:column;gap:1rem;min-height:auto}
+  .cd-himg{position:relative;top:auto;left:auto;right:auto;width:100%;aspect-ratio:16/10}
+  .cd-tline,.cd-dot,.cd-anno{display:none}
+}
