@@ -501,6 +501,8 @@ blockquote{
 .news button:hover{background:var(--accent)}
 .news__msg{display:block;margin-top:.6rem;font-size:.72rem;color:var(--violet)}
 .footer__legal{grid-column:1/-1;border-right:none;border-bottom:none;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.7rem;opacity:.6}
+.footer__legal a{transition:color .3s}
+.footer__legal a:hover{color:var(--accent)}
 
 /* =====================================================================
    MODAL
