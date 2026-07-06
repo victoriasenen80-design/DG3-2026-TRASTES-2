@@ -22,42 +22,119 @@
     })
   );
 
-  /* ---------- SECCIÓN 4 · Servicios (acordeón exclusivo) ---------- */
-  $$(".service").forEach(item => {
-    const btn = $(".service__row", item);
-    btn.addEventListener("click", () => {
-      const isOpen = item.classList.contains("is-open");
-      $$(".service").forEach(s => {
-        s.classList.remove("is-open");
-        $(".service__row", s).setAttribute("aria-expanded", "false");
-      });
-      if (!isOpen) {
-        item.classList.add("is-open");
-        btn.setAttribute("aria-expanded", "true");
-      }
-    });
-  });
-
   /* ---------- SECCIÓN 6 · Maderas (selector + panel dinámico) ---------- */
   const WOODS = {
+    koa: {
+      cat: "resonantes", sym: "Ko",
+      title: "Koa Hawaiana",
+      lat: "Acacia koa",
+      grade: "AAAAA · Flame Extreme",
+      grain: "url(assets/koa.jpg) center/cover no-repeat",
+      back: "url(assets/madera_3.jpg) center/cover no-repeat",
+      desc: "Madera hawaiana de tonos dorados con un marcado dibujo flameado que cambia con la luz. Su sonido combina calidez, definición y una proyección muy equilibrada.",
+      use: "Tapas armónicas en algunos instrumentos de alta gama, fondos, y aros.",
+      density: "0,61 g/cm³",
+      speed: "4.800 m/s",
+      freq: [70, 88, 74]
+    },
     lutz: {
+      cat: "resonantes", sym: "Lz",
       title: "Abeto de Lutz",
       lat: "Picea × lutzii",
       grade: "Master Grade",
-      grain: "url(assets/madera_1.jpg) center/cover no-repeat",
-      back: "url(assets/abeto.png) center/cover no-repeat",
-      desc: "Combina la rigidez del abeto de Sitka con la ligereza del abeto blanco. Volumen acústico y rango de proyección excepcionales. Color blanco cremoso con marcas de oso (bearclaw). Corte radial perfecto a 90° y grano de más de 15 líneas por pulgada.",
+      grain: "url(assets/abeto.jpg) center/cover no-repeat",
+      back: "url(assets/madera_1.jpg) center/cover no-repeat",
+      desc: "De color crema claro con vetas rectas y uniformes. Destaca por su excelente relación entre rigidez y peso, ofreciendo un sonido potente, equilibrado y con gran proyección.",
       use: "Tapas armónicas de guitarras de concierto y violines de alta proyección.",
       density: "0,42 g/cm³",
       speed: "5.900 m/s",
       freq: [45, 62, 95] // graves / medios / agudos (%)
     },
+    redwood: {
+      cat: "resonantes", sym: "Rw",
+      title: "Redwood Burl",
+      lat: "Sequoia sempervirens (Burl Figure)",
+      grade: "Master Grade · Burl Figure",
+      grain: "url(assets/redwood.jpg) center/cover no-repeat",
+      back: "url(assets/madera_5.jpg) center/cover no-repeat",
+      desc: "Se caracteriza por sus vetas onduladas y patrones tridimensionales únicos. Ofrece un sonido cálido, abierto y muy equilibrado, con una excelente riqueza de armónicos.",
+      use: "Tapas armónicas y elementos decorativos en instrumentos personalizados de alta gama.",
+      density: "≈ 0,45 g/cm³",
+      speed: "≈ 5.100 m/s",
+      freq: [86, 86, 68]
+    },
+    cedro: {
+      cat: "resonantes", sym: "Cr",
+      title: "Cedro Rojo Occidental",
+      lat: "Thuja plicata",
+      grade: "Master Grade",
+      grain: "url(assets/cedro.jpg) center/cover no-repeat",
+      back: "url(assets/madera_6.jpg) center/cover no-repeat",
+      desc: "Presenta tonalidades rojizas y una veta fina y uniforme. Produce un sonido cálido, con gran riqueza armónica y una respuesta inmediata al toque.",
+      use: "Tapa armónica de guitarras clásicas y flamencas de concierto.",
+      density: "≈ 0,37 g/cm³",
+      speed: "≈ 5.300 m/s",
+      freq: [86, 86, 68]
+    },
+    maple: {
+      cat: "estabilidad", sym: "Qm",
+      title: "Quilted Maple",
+      lat: "Acer macrophyllum",
+      grade: "Master Grade · Quilt Figure",
+      grain: "url(assets/quilted.png) center/cover no-repeat",
+      back: "url(assets/madera_10.png) center/cover no-repeat",
+      desc: "Destaca por su espectacular figura tridimensional con efecto acolchado que cambia según la luz. Produce un sonido brillante, preciso y muy definido.",
+      use: "Fondos, aros, tapas decorativas y cuerpos de instrumentos premium.",
+      density: "≈ 0,56 g/cm³",
+      speed: "≈ 5.000 m/s",
+      freq: [48, 72, 92]
+    },
+    caoba: {
+      cat: "estabilidad", sym: "Ca",
+      title: "Caoba",
+      lat: "Swietenia macrophylla",
+      grade: "AAA · Calidad superior",
+      grain: "url(assets/caoba.jpg) center/cover no-repeat",
+      back: "url(assets/madera_7.jpg) center/cover no-repeat",
+      desc: "Madera de tonos marrón rojizo con veta recta y uniforme. Destaca por su gran estabilidad, ofreciendo un sonido cálido, equilibrado y con medios muy presentes.",
+      use: "Cuerpos, mástiles y componentes estructurales de instrumentos acústicos y eléctricos.",
+      density: "≈ 0,56 g/cm³",
+      speed: "≈ 4.700 m/s",
+      freq: [72, 92, 48]
+    },
+    arce: {
+      cat: "estabilidad", sym: "Ar",
+      title: "Arce",
+      lat: "Acer saccharum",
+      grade: "AAA · Calidad superior",
+      grain: "url(assets/arce.png) center/cover no-repeat",
+      back: "url(assets/madera_8.jpg) center/cover no-repeat",
+      desc: "Madera clara de veta fina y uniforme, apreciada por su elevada rigidez y estabilidad. Produce un sonido brillante, definido y con excelente respuesta dinámica.",
+      use: "Mástiles, fondos, aros y cuerpos de instrumentos de alta gama.",
+      density: "≈ 0,71 g/cm³",
+      speed: "≈ 5.100 m/s",
+      freq: [48, 72, 92]
+    },
+    nogal: {
+      cat: "estabilidad", sym: "Nc",
+      title: "Nogal Claro",
+      lat: "Juglans hindsii × Juglans regia",
+      grade: "Master Grade · Figura natural",
+      grain: "url(assets/nogal.png) center/cover no-repeat",
+      back: "url(assets/madera_9.jpg) center/cover no-repeat",
+      desc: "Presenta una combinación de tonos marrones, dorados y vetas oscuras muy marcadas. Ofrece un sonido equilibrado, con graves profundos, medios cálidos y agudos suaves.",
+      use: "Fondos, aros y cuerpos de instrumentos personalizados de alta gama.",
+      density: "≈ 0,61 g/cm³",
+      speed: "≈ 4.800 m/s",
+      freq: [92, 72, 72]
+    },
     palisandro: {
-      title: "Palisandro de Brasil",
-      lat: "Dalbergia nigra",
+      cat: "dureza", sym: "Pb",
+      title: "Palisandro",
+      lat: "Dalbergia latifolia",
       grade: "Grado Histórico",
-      grain: "url(assets/madera_2.jpg) center/cover no-repeat",
-      back: "url(assets/palisandro.png) center/cover no-repeat",
+      grain: "url(assets/palisandro.jpg) center/cover no-repeat",
+      back: "url(assets/madera_2.jpg) center/cover no-repeat",
       flip: true,
       desc: "Sonido sumamente resonante: graves profundos, agudos metálicos cristalinos y sustain muy prolongado. Marrón chocolate con líneas de crecimiento negras y destellos naranjas. Lotes antiguos pre-convención con trazabilidad legal.",
       use: "Fondos y aros de guitarras acústicas y clásicas de concierto.",
@@ -65,29 +142,41 @@
       speed: "5.100 m/s",
       freq: [98, 70, 88]
     },
-    koa: {
-      title: "Koa Hawaiana",
-      lat: "Acacia koa",
-      grade: "AAAAA · Flame Extreme",
-      grain: "url(assets/madera_3.jpg) center/cover no-repeat",
-      back: "url(assets/koa.jpg) center/cover no-repeat",
-      desc: "Tono equilibrado que evoluciona con el uso, ganando calidez. Veteado altamente figurado en tonos dorados, ámbar y rojizos, con intenso efecto tridimensional de llama. Simetría perfecta en el patrón de rizados.",
-      use: "Cuerpos completos de guitarras acústicas Premium y diapasones ornamentales.",
-      density: "0,61 g/cm³",
-      speed: "4.800 m/s",
-      freq: [70, 88, 74]
-    },
     ebano: {
-      title: "Ébano de Gabón",
-      lat: "Diospyros crassiflora",
-      grade: "Grado Especial de Concierto",
-      grain: "url(assets/madera_4.jpg) center/cover no-repeat",
-      back: "url(assets/ebano.jpg) center/cover no-repeat",
-      desc: "Alta velocidad de transmisión del sonido, ataque percusivo inmediato y decaimiento armónico muy controlado. Negro azabache, grano extremadamente fino y densidad óptima, libre de alburas.",
-      use: "Diapasones, cejuelas y puentes sometidos a alta fricción y desgaste.",
-      density: "1,03 g/cm³",
-      speed: "6.200 m/s",
-      freq: [60, 78, 100]
+      cat: "dureza", sym: "Éb",
+      title: "Ébano Macassar",
+      lat: "Diospyros celebica",
+      grade: "Master Grade · Exotic Figure",
+      grain: "linear-gradient(105deg,#241a12,#3d2c1c 40%,#5a4128 60%,#1a120c)",
+      desc: "Se distingue por su combinación de vetas negras y marrón oscuro con un patrón lineal muy elegante. Su elevada densidad proporciona un ataque rápido, gran definición y una respuesta extremadamente precisa.",
+      use: "Diapasones, puentes, clavijas y detalles decorativos en instrumentos de alta gama.",
+      density: "≈ 1,05 g/cm³",
+      speed: "≈ 5.400 m/s",
+      freq: [48, 72, 92]
+    },
+    snakewood: {
+      cat: "dureza", sym: "Sw",
+      title: "Snakewood",
+      lat: "Brosimum guianense",
+      grade: "Master Grade · Exotic Figure",
+      grain: "linear-gradient(105deg,#5a2414,#8a3f22 40%,#b06034 60%,#3e1810)",
+      desc: "Reconocida por su llamativo dibujo que recuerda a la piel de una serpiente, combina una dureza excepcional con una gran estabilidad. Produce un sonido brillante, muy definido y con excelente articulación.",
+      use: "Diapasones, puentes, cordales, accesorios y detalles exclusivos en instrumentos premium.",
+      density: "≈ 1,20 g/cm³",
+      speed: "≈ 5.600 m/s",
+      freq: [48, 72, 92]
+    },
+    manchinga: {
+      cat: "dureza", sym: "Ms",
+      title: "Manchinga Spalted",
+      lat: "Brosimum utile (Spalted Figure)",
+      grade: "Master Grade · Spalted Figure",
+      grain: "linear-gradient(105deg,#8a6f4a,#b39668 40%,#d8c091 60%,#6e5636)",
+      desc: "Se caracteriza por sus líneas oscuras generadas naturalmente durante el proceso de spalting, creando un patrón único e irrepetible. Ofrece un sonido equilibrado, con buena proyección y riqueza armónica.",
+      use: "Fondos, aros, tapas decorativas y detalles exclusivos en instrumentos personalizados.",
+      density: "≈ 0,78 g/cm³",
+      speed: "≈ 4.700 m/s",
+      freq: [72, 92, 72]
     }
   };
 
@@ -132,33 +221,82 @@
       });
     }
   }
-  $$(".wood-cell").forEach(cell => {
-    cell.addEventListener("click", () => {
-      $$(".wood-cell").forEach(c => {
-        c.classList.remove("is-active");
-        c.setAttribute("aria-selected", "false");
+  const woodSelector = $("#woodSelector");
+  // construye las celdas de la categoría activa
+  function renderCells(cat) {
+    const keys = Object.keys(WOODS).filter(k => WOODS[k].cat === cat);
+    woodSelector.innerHTML = keys.map((k, i) => {
+      const w = WOODS[k];
+      return `<button class="wood-cell${i === 0 ? " is-active" : ""}" role="tab" data-wood="${k}" aria-selected="${i === 0}">
+          <span class="wood-cell__sym">${w.sym}</span>
+          <span class="wood-cell__name">${w.title}</span>
+          <span class="wood-cell__lat">${w.lat}</span>
+        </button>`;
+    }).join("");
+    $$(".wood-cell", woodSelector).forEach(cell => {
+      cell.addEventListener("click", () => {
+        $$(".wood-cell", woodSelector).forEach(c => {
+          c.classList.remove("is-active");
+          c.setAttribute("aria-selected", "false");
+        });
+        cell.classList.add("is-active");
+        cell.setAttribute("aria-selected", "true");
+        renderWood(cell.dataset.wood);
       });
-      cell.classList.add("is-active");
-      cell.setAttribute("aria-selected", "true");
-      renderWood(cell.dataset.wood);
+    });
+    if (keys[0]) renderWood(keys[0]);
+  }
+  // nota técnica por familia de madera (se muestra al elegir una solapa)
+  const WOOD_NOTES = {
+    resonantes: "Definen gran parte del carácter tonal del instrumento y optimizan la transmisión de las vibraciones. Se utilizan principalmente en tapas armónicas.",
+    estabilidad: "Aportan rigidez y estabilidad estructural para mantener el rendimiento del instrumento a lo largo del tiempo. Se emplean en mástiles, cuerpos, fondos y aros.",
+    dureza: "Destacan por su elevada dureza y durabilidad, ideales para soportar el desgaste continuo. Se utilizan en diapasones, puentes y componentes de alta exigencia."
+  };
+  const woodNote = $("#woodNote");
+  function renderWoodNote(cat) {
+    if (!woodNote) return;
+    const txt = WOOD_NOTES[cat];
+    if (!txt) { woodNote.classList.remove("is-show"); woodNote.innerHTML = ""; return; }
+    const tab = $(`.woods__tab[data-cat="${cat}"]`);
+    const label = tab ? tab.textContent.trim() : "Maderas";
+    woodNote.innerHTML = `
+      <svg class="wn__svg" viewBox="0 0 24 66" preserveAspectRatio="xMinYMin meet" aria-hidden="true">
+        <circle cx="11" cy="3" r="2.5" class="a-dot"/>
+        <line x1="11" y1="3" x2="11" y2="46" class="a-line"/>
+        <line x1="11" y1="46" x2="23" y2="46" class="a-line"/>
+      </svg>
+      <div class="wn__body">
+        <span class="wn__tag">Nota téc. · ${label}</span>
+        <p>${txt}</p>
+      </div>`;
+    woodNote.classList.add("is-show");
+  }
+  // pestañas de categoría
+  $$(".woods__tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      $$(".woods__tab").forEach(t => {
+        t.classList.remove("is-active");
+        t.setAttribute("aria-selected", "false");
+      });
+      tab.classList.add("is-active");
+      tab.setAttribute("aria-selected", "true");
+      renderCells(tab.dataset.cat);
+      renderWoodNote(tab.dataset.cat);
     });
   });
-  renderWood("lutz"); // estado inicial
+  renderCells("resonantes");    // estado inicial
+  renderWoodNote("resonantes"); // nota de la solapa activa por defecto
 
   /* ---------- SECCIÓN 9 · Reseñas (carrusel + nota) ---------- */
   const REVIEWS = [
-    { id: "#328", img: "rev-1", name: "Nadia Ferrán", role: "Concertista clásica",
-      text: "La proyección en sala es sencillamente otra categoría. Cada matiz del pianissimo llega hasta la última fila sin esfuerzo." },
-    { id: "#612", img: "rev-2", name: "Mateo Alvear", role: "Guitarrista de sesión",
-      text: "Estabilidad de afinación perfecta y un balance tonal donde cada nota del registro agudo conserva una redondez y un sustain extraordinarios." },
-    { id: "#541", img: "rev-3", name: "Sofia Lindqvist", role: "Violinista · Ópera de Estocolmo",
-      text: "El timbre de este violín posee una densidad armónica excepcional. La velocidad de respuesta ante el menor roce del arco permite dinámicas que antes me resultaban inalcanzables." },
-    { id: "#704", img: "rev-4", name: "Tomás Rivas", role: "Bajista de jazz",
-      text: "El sustain y la definición en las cuerdas graves transformaron mi manera de tocar. Un instrumento con carácter propio." },
-    { id: "#489", img: "rev-5", name: "Elena Kovács", role: "Violinista de cámara",
-      text: "La respuesta bajo el arco es inmediata y sedosa. Sentí que el violín interpretaba conmigo, no que yo luchaba con él." },
-    { id: "#856", img: "rev-6", name: "Diego Sauer", role: "Luthier & intérprete",
-      text: "Detalle constructivo impecable. Se nota la mano del maestro en cada veta y en el equilibrio tonal del conjunto." },
+    { img: "rev-1", name: "Nadia Ferrán", role: "Concertista clásica", years: 25,
+      text: "Concertista clásica de trayectoria internacional. En el taller acompaña la construcción y el ajuste de guitarras de concierto, aportando su oído de intérprete a cada tapa armónica." },
+    { img: "rev-2", name: "Mateo Alvear", role: "Guitarrista de sesión", years: 20,
+      text: "Guitarrista de sesión con más de veinte años de escenario. Enseña el proceso completo de la guitarra eléctrica: ruteado del cuerpo, electrónica y puesta a punto final." },
+    { img: "rev-3", name: "Sofia Lindqvist", role: "Violinista · Ópera de Estocolmo", years: 22,
+      text: "Violinista de la Ópera de Estocolmo. Transmite las proporciones de Cremona, el tallado de bóvedas y el ajuste tonal que dan voz a cada violín." },
+    { img: "rev-6", name: "Diego Sauer", role: "Luthier & intérprete", years: 40,
+      text: "Luthier e intérprete, alma del taller. Supervisa cada proyecto y comparte el oficio completo, del bloque de madera hasta el barniz a muñequilla." },
   ];
   const revTrack = $("#revTrack");
   const revNote  = $("#revNote");
@@ -171,9 +309,7 @@
       const li = document.createElement("li");
       li.className = "rev-card";
       li.setAttribute("role", "tab");
-      li.innerHTML = `
-        <div class="rev-card__img rev-card__img--${r.img}"></div>
-        <span class="rev-card__id">N° de afiliado ${r.id}</span>`;
+      li.innerHTML = `<div class="rev-card__img rev-card__img--${r.img}"></div><span class="rev-card__id">${r.name}</span>`;
       li.addEventListener("click", () => setActive(i, true));
       revTrack.appendChild(li);
     });
@@ -187,10 +323,9 @@
           <line x1="11" y1="46" x2="23" y2="46" class="a-line"/>
         </svg>
         <div class="rev-note__body">
-          <span class="rev-note__tag">Reseña · afiliado ${r.id}</span>
-          <div class="rev-note__stars" aria-label="5 de 5 estrellas">★★★★★</div>
-          <p class="rev-note__text">«${r.text}»</p>
-          <span class="rev-note__author">${r.name}<em>${r.role}</em></span>
+          <span class="rev-note__tag">Equipo · TRASTES</span>
+          <p class="rev-note__text">${r.text}</p>
+          <span class="rev-note__author">+${r.years} años de experiencia</span>
         </div>`;
     }
 
@@ -243,6 +378,31 @@
     const c0 = cards[revActive];
     revCarousel.scrollTop = c0.offsetTop - (revCarousel.clientHeight - c0.offsetHeight) / 2;
     paintActive();
+  }
+
+  /* ---------- Reseñas · marquee automático (testimonios) ---------- */
+  const TESTIMONIALS = [
+    { text: "Entré sin haber tocado una gubia en mi vida. Salí con una guitarra que hoy uso en cada concierto. La atención uno a uno lo cambia todo.", name: "Camila Duarte", role: "Guitarrista clásica · Egresada 2025" },
+    { text: "Compré una criolla de autor y no hay comparación con las de fábrica. El sonido tiene un alma propia que se siente en cada nota.", name: "Martín Silva", role: "Coleccionista · Guitarra criolla a medida" },
+    { text: "El curso superó todo lo que esperaba. Terminé entendiendo cada parte del instrumento y me llevé una eléctrica hecha con mis propias manos.", name: "Rodrigo Peña", role: "Egresado · Curso de guitarra eléctrica" },
+    { text: "Encargué un violín a medida y la proyección en sala es incomparable. Se nota el trabajo artesanal en cada detalle.", name: "Valentina Ríos", role: "Violinista · Instrumento por encargo" },
+    { text: "Las clases individuales marcan la diferencia. Cada duda se resolvía en el momento, guiando mi mano paso a paso.", name: "Sofía Herrera", role: "Egresada · Curso de guitarra criolla" },
+    { text: "Pedí un bajo con especificaciones muy puntuales y lo clavaron. Comodidad y definición en cada nota, de punta a punta del mástil.", name: "Andrés Molina", role: "Bajista · Bajo eléctrico a medida" },
+    { text: "Aprendí muchísimo más de lo que imaginaba. Hoy no solo toco: también entiendo por qué mi instrumento suena como suena.", name: "Lucía Fernández", role: "Egresada · Curso de violín" },
+    { text: "Es una inversión que se justifica sola. Un instrumento irrepetible, con una calidez que no encontré en ningún otro lado.", name: "Julián Costa", role: "Coleccionista · Guitarra de concierto" },
+    { text: "Llegué sin ninguna experiencia y me fui con mi propia guitarra funcionando. El acompañamiento del maestro es de otro nivel.", name: "Mariana López", role: "Egresada · Curso de guitarra eléctrica" },
+    { text: "Mi guitarra hecha a medida se siente como una extensión de mi mano. Cada encargo es una experiencia realmente única.", name: "Federico Ramos", role: "Guitarrista · Guitarra a medida" },
+  ];
+  const testiTrack = $("#testiTrack");
+  if (testiTrack) {
+    const cardHTML = t => `
+      <article class="testi-card">
+        <div class="testi-card__stars" aria-hidden="true">★★★★★</div>
+        <blockquote class="testi-card__quote">«${t.text}»</blockquote>
+        <div class="testi-card__author"><b>${t.name}</b><span>${t.role}</span></div>
+      </article>`;
+    const html = TESTIMONIALS.map(cardHTML).join("");
+    testiTrack.innerHTML = html + html; // duplicado para el loop continuo
   }
 
   /* ---------- SECCIÓN 10 · FAQ (acordeón) ---------- */
@@ -327,15 +487,17 @@
   /* ---------- Footer · newsletter (demo) ---------- */
   const newsForm = $("#newsForm");
   const newsMsg  = $("#newsMsg");
-  newsForm.addEventListener("submit", e => {
-    e.preventDefault();
-    newsMsg.textContent = "✓ Suscripción registrada. Recibirás la bitácora del luthier.";
-    newsForm.reset();
-  });
+  if (newsForm && newsMsg) {
+    newsForm.addEventListener("submit", e => {
+      e.preventDefault();
+      newsMsg.textContent = "✓ Suscripción registrada. Recibirás la bitácora del luthier.";
+      newsForm.reset();
+    });
+  }
 
   /* ---------- Reveal on scroll ---------- */
   const targets = $$(
-    ".section-title, .benefit, .frame, .course, .review, .qa, .hero__text, .vip__mock, .woods__body"
+    ".section-title, .benefit, .course, .review, .qa, .hero__text, .vip__mock, .woods__body"
   );
   targets.forEach(t => t.classList.add("reveal"));
   if ("IntersectionObserver" in window) {
@@ -352,20 +514,4 @@
     targets.forEach(t => t.classList.add("is-in"));
   }
 
-  /* ---------- Proceso · arrastrar para desplazar (drag scroll) ---------- */
-  const track = $("#processTrack");
-  if (track) {
-    let down = false, startX = 0, scroll = 0;
-    track.addEventListener("mousedown", e => {
-      down = true; startX = e.pageX; scroll = track.scrollLeft; track.style.cursor = "grabbing";
-    });
-    ["mouseup", "mouseleave"].forEach(ev =>
-      track.addEventListener(ev, () => { down = false; track.style.cursor = ""; })
-    );
-    track.addEventListener("mousemove", e => {
-      if (!down) return;
-      e.preventDefault();
-      track.scrollLeft = scroll - (e.pageX - startX) * 1.4;
-    });
-  }
 })();
