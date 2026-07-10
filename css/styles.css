@@ -772,6 +772,7 @@ blockquote{
   .footer__news{grid-column:1/-1}
   .footer>div{border-right:none}
   .footer>div:nth-child(1),.footer>div:nth-child(2){border-bottom:none}
+  .testi__track{animation-duration:160s}
   .cta__title{transform:none}
   .cta__inner{padding-top:3rem;padding-bottom:3rem}
   .hero__actions .btn{flex:1;text-align:center}
