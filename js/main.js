@@ -53,7 +53,7 @@
     redwood: {
       cat: "resonantes", sym: "Rw",
       title: "Redwood Burl",
-      lat: "Sequoia sempervirens",
+      lat: "Sequoia semper",
       grade: "Master Grade · Burl Figure",
       grain: "url(assets/redwood.jpg) center/cover no-repeat",
       back: "url(assets/madera_5.jpg) center/cover no-repeat",
@@ -66,7 +66,7 @@
     cedro: {
       cat: "resonantes", sym: "Cr",
       title: "Cedro Rojo Occidental",
-      lat: "Thuja plicata",
+      lat: "Thuja",
       grade: "Master Grade",
       grain: "url(assets/cedro.jpg) center/cover no-repeat",
       back: "url(assets/madera_6.jpg) center/cover no-repeat",
@@ -226,8 +226,18 @@
     }
   }
   const woodSelector = $("#woodSelector");
+  const woodsBody = $(".woods__body");
+  const mqWoods = window.matchMedia("(max-width:620px)");   // acordeón solo en mobile
+  // devuelve el panel a su posición de escritorio (después del selector)
+  function restoreWoodPanel() {
+    if (panel && panel.previousElementSibling !== woodSelector) {
+      woodSelector.after(panel);
+    }
+    if (woodsBody) woodsBody.classList.remove("woods__body--open");
+  }
   // construye las celdas de la categoría activa
   function renderCells(cat) {
+    restoreWoodPanel();
     const keys = Object.keys(WOODS).filter(k => WOODS[k].cat === cat);
     woodSelector.innerHTML = keys.map((k, i) => {
       const w = WOODS[k];
@@ -237,19 +247,40 @@
           <span class="wood-cell__lat">${w.lat}</span>
         </button>`;
     }).join("");
-    $$(".wood-cell", woodSelector).forEach(cell => {
+    const cells = $$(".wood-cell", woodSelector);
+    cells.forEach(cell => {
       cell.addEventListener("click", () => {
-        $$(".wood-cell", woodSelector).forEach(c => {
-          c.classList.remove("is-active");
-          c.setAttribute("aria-selected", "false");
-        });
-        cell.classList.add("is-active");
-        cell.setAttribute("aria-selected", "true");
-        renderWood(cell.dataset.wood);
+        if (mqWoods.matches) {
+          // acordeón mobile: el panel se despliega debajo de la celda
+          const wasOpen = cell.classList.contains("is-active") && woodsBody.classList.contains("woods__body--open");
+          cells.forEach(c => { c.classList.remove("is-active"); c.setAttribute("aria-selected", "false"); });
+          if (wasOpen) { restoreWoodPanel(); return; }
+          cell.classList.add("is-active");
+          cell.setAttribute("aria-selected", "true");
+          renderWood(cell.dataset.wood);
+          cell.after(panel);
+          woodsBody.classList.add("woods__body--open");
+        } else {
+          cells.forEach(c => { c.classList.remove("is-active"); c.setAttribute("aria-selected", "false"); });
+          cell.classList.add("is-active");
+          cell.setAttribute("aria-selected", "true");
+          renderWood(cell.dataset.wood);
+        }
       });
     });
     if (keys[0]) renderWood(keys[0]);
+    if (mqWoods.matches) {
+      // en mobile arranca colapsado
+      cells.forEach(c => { c.classList.remove("is-active"); c.setAttribute("aria-selected", "false"); });
+      restoreWoodPanel();
+    }
   }
+  // al cruzar el breakpoint, reconstruir con el estado correcto
+  mqWoods.addEventListener("change", () => {
+    const t = $(".woods__tab.is-active");
+    const cat = t ? t.dataset.cat : "resonantes";
+    renderCells(cat);
+  });
   // nota técnica por familia de madera (se muestra al elegir una solapa)
   const WOOD_NOTES = {
     resonantes: "Definen gran parte del carácter tonal del instrumento y optimizan la transmisión de las vibraciones. Se utilizan principalmente en tapas armónicas.",
@@ -262,7 +293,8 @@
     const txt = WOOD_NOTES[cat];
     if (!txt) { woodNote.classList.remove("is-show"); woodNote.innerHTML = ""; return; }
     const tab = $(`.woods__tab[data-cat="${cat}"]`);
-    const label = tab ? tab.textContent.trim() : "Maderas";
+    const tabFull = tab ? $(".woods__tab-full", tab) : null;
+    const label = (tabFull ? tabFull.textContent : tab ? tab.textContent : "Maderas").trim();
     woodNote.innerHTML = `
       <svg class="wn__svg" viewBox="0 0 24 66" preserveAspectRatio="xMinYMin meet" aria-hidden="true">
         <circle cx="11" cy="3" r="2.5" class="a-dot"/>
@@ -294,13 +326,13 @@
   /* ---------- SECCIÓN 9 · Reseñas (carrusel + nota) ---------- */
   const REVIEWS = [
     { img: "rev-1", name: "Nadia Ferrán", role: "Concertista clásica", years: 25,
-      text: "Concertista clásica de trayectoria internacional. En el taller acompaña la construcción y el ajuste de guitarras de concierto, aportando su oído de intérprete a cada tapa armónica." },
+      text: "Concertista clásica de trayectoria internacional. Aporta su experiencia electrónica y puesta a punto para lograr bajos precisos y equilibrados." },
     { img: "rev-2", name: "Mateo Alvear", role: "Guitarrista clásico", years: 20,
-      text: "Guitarrista clásico con más de veinte años de escenario. Enseña el proceso completo de la guitarra criolla: selección de la madera, construcción de la caja armónica y barniz a muñequilla." },
+      text: "Luthier especializado en guitarras clásicas de concierto. En el taller comparte las técnicas tradicionales del oficio en cada etapa del curso." },
     { img: "rev-3", name: "Sofia Lindqvist", role: "Violinista · Ópera de Estocolmo", years: 22,
-      text: "Violinista de la Ópera de Estocolmo. Transmite las proporciones de Cremona, el tallado de bóvedas y el ajuste tonal que dan voz a cada violín." },
+      text: "Violinista de la Ópera de Estocolmo. Su experiencia como intérprete aporta precisión acústica y sensibilidad musical en cada etapa de la construcción." },
     { img: "rev-6", name: "Diego Sauer", role: "Luthier & intérprete", years: 40,
-      text: "Luthier e intérprete, alma del taller. Supervisa cada proyecto y comparte el oficio completo, del bloque de madera hasta el barniz a muñequilla." },
+      text: "Guitarrista de sesión con amplia experiencia en escenario. Guía la construcción de guitarras eléctricas con foco en el sonido, la comodidad y la versatilidad." },
   ];
   const revTrack = $("#revTrack");
   const revNote  = $("#revNote");

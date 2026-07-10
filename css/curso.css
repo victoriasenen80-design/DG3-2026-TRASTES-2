@@ -3,7 +3,8 @@
    Depende de styles.css (variables, .nav, .btn, .tag, .ph, .qa, reveal…)
    ===================================================================== */
 
-.footer__nav-links{column-gap:4rem}
+.footer__nav-links{column-count:2;column-gap:4rem}
+.footer{grid-template-columns:1.6fr 1.2fr 1fr 1.2fr}
 
 /* imágenes de la página (reutiliza fotos del taller) */
 .ph--cd-method{background:url("../assets/individual.jpg") center 25%/cover no-repeat}
