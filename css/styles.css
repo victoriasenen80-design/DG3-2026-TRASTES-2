@@ -422,7 +422,7 @@ blockquote{
   background-size:0 1px;transition:background-size .45s var(--ease);
 }
 .course:hover h3{background-size:100% 1px}
-.course__lead{font-size:.8rem;opacity:.85}
+.course__lead{font-size:.8rem;opacity:.85;align-self:center;text-align:center}
 .course__meta{
   list-style:none;width:100%;margin-top:auto;
   display:flex;flex-direction:column;gap:.55rem;
@@ -772,7 +772,7 @@ blockquote{
   .footer__news{grid-column:1/-1}
   .footer>div{border-right:none}
   .footer>div:nth-child(1),.footer>div:nth-child(2){border-bottom:none}
-  .testi__track{animation-duration:160s}
+  .testi__track{animation-duration:260s}
   .cta__title{transform:none}
   .cta__inner{padding-top:3rem;padding-bottom:3rem}
   .hero__actions .btn{flex:1;text-align:center}
