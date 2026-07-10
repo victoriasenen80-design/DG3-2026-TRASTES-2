@@ -154,6 +154,7 @@ em{font-style:italic}
   background:var(--cream);display:inline-block;padding:.2em .3em .2em 0;
 }
 .hero__title .hl-word{font-weight:700;color:var(--accent)}
+.hero__sp--mobile-show{display:none}
 .hero__title em{color:var(--accent)}
 .hero__lead{max-width:48ch;font-size:.95rem}
 .hero__actions{display:flex;gap:.8rem;flex-wrap:wrap}
@@ -677,7 +678,9 @@ blockquote{
   }
   .hero{grid-template-columns:1fr;grid-template-rows:45vh auto}
   .hero__image{border-right:none;border-bottom:.5px solid var(--line)}
-  .hero__title{margin-left:0}
+  .hero__title{margin-left:0;font-size:clamp(1.8rem,8vw,2.2rem)}
+  .hero__br--mobile-hide{display:none}
+  .hero__sp--mobile-show{display:inline}
   .hero__text{padding:2.5rem var(--gut)}
   .manifesto{grid-template-columns:1fr;min-height:auto}
   .manifesto__left .ph{flex:none}
@@ -695,6 +698,8 @@ blockquote{
   .benefits__zigzag .benefit:last-of-type{border-bottom:.5px solid var(--line)}
   .zz-conn{display:none}
   .woods__body{grid-template-columns:1fr}
+  .woods__note{transform:none}
+  .vip__mock{flex-wrap:wrap}
   .woods__selector{border-right:none;border-bottom:.5px solid var(--line)}
   .woods__panel{border-left:none}
   .courses__grid{grid-template-columns:1fr 1fr}
@@ -702,6 +707,8 @@ blockquote{
   .footer{grid-template-columns:1fr 1fr}
 }
 @media(max-width:620px){
+  .footer__nav-links{column-count:1}
+  .footer__nav-links a{white-space:normal}
   .benefits__grid{grid-template-columns:1fr}
   .benefit{border-right:none}
   .courses__grid{grid-template-columns:1fr}
