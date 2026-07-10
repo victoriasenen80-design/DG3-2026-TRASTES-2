@@ -63,8 +63,45 @@
     });
   }
 
+  /* ---------- Kit incluido · hotspots ---------- */
+  const kitHotspots = $$(".cd-kit__hotspot");
+  kitHotspots.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const open = !btn.classList.contains("is-open");
+      kitHotspots.forEach(b => {
+        b.classList.remove("is-open");
+        b.setAttribute("aria-expanded", "false");
+      });
+      if (open) {
+        btn.classList.add("is-open");
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
+  /* ---------- Testimonios · marquee automático ---------- */
+  const CD_TESTIMONIALS = [
+    { text: "Entré sin haber tocado una gubia en mi vida. Salí con una guitarra que hoy uso en cada concierto. La atención uno a uno lo cambia todo.", name: "Camila Duarte", role: "Guitarrista clásica · Egresada 2025" },
+    { text: "Es mucho más que un curso: es entender por qué la madera suena. El barnizado a muñequilla fue una experiencia casi ceremonial.", name: "Rodrigo Peña", role: "Coleccionista · Egresado 2024" },
+    { text: "Llegué sin ninguna experiencia y me fui con mi propia guitarra funcionando. El acompañamiento del maestro es de otro nivel.", name: "Mariana López", role: "Egresada · Curso de guitarra criolla" },
+    { text: "Cada clase avanzaba una etapa real de la construcción. Al final entendía mi instrumento de una manera que ningún manual me hubiera dado.", name: "Julián Costa", role: "Egresado · Curso de guitarra criolla" },
+    { text: "El curso superó todo lo que esperaba. Terminé entendiendo cada parte del instrumento y me llevé una guitarra hecha con mis propias manos.", name: "Valentina Ríos", role: "Egresada · Curso de guitarra criolla" },
+    { text: "Las clases individuales marcan la diferencia. Cada duda se resolvía en el momento, guiando mi mano paso a paso.", name: "Sofía Herrera", role: "Egresada · Curso de guitarra criolla" },
+  ];
+  const cdTestiTrack = $("#cdTestiTrack");
+  if (cdTestiTrack) {
+    const cardHTML = t => `
+      <article class="testi-card">
+        <div class="testi-card__stars" aria-hidden="true">★★★★★</div>
+        <blockquote class="testi-card__quote">«${t.text}»</blockquote>
+        <div class="testi-card__author"><b>${t.name}</b><span>${t.role}</span></div>
+      </article>`;
+    const html = CD_TESTIMONIALS.map(cardHTML).join("");
+    cdTestiTrack.innerHTML = html + html; // duplicado para el loop continuo
+  }
+
   /* ---------- Reveal on scroll ---------- */
-  const targets = $$(".reveal, .section-title, .cd-module, .cd-inc, .cd-review, .qa");
+  const targets = $$(".reveal, .section-title, .cd-module, .qa");
   targets.forEach(t => t.classList.add("reveal"));
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver((entries) => {

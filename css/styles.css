@@ -55,7 +55,7 @@ em{font-style:italic}
   text-transform:none;
 }
 .section-title em{color:var(--accent)}
-.section-title--light{color:var(--cream);line-height:1.12}
+.section-title--light{color:var(--cream);line-height:1.12;font-size:clamp(2rem,5vw,4.4rem)}
 .section-title--light em{color:var(--accent)}
 
 .btn{
@@ -71,6 +71,7 @@ em{font-style:italic}
 .btn--dark{background:var(--espresso);color:var(--cream);border-color:var(--espresso)}
 .btn--dark:hover{background:var(--cream);color:var(--espresso)}
 .btn--soon{background:transparent;color:var(--cream);border-color:rgba(250,246,238,.4);cursor:default;font-size:.7rem}
+.vip__text .btn--soon{margin-top:auto}
 
 /* ---------- placeholders (madera / blueprint) ---------- */
 .ph{position:relative;overflow:hidden;background:var(--espresso);isolation:isolate}
@@ -167,7 +168,7 @@ em{font-style:italic}
   display:grid;grid-template-columns:1fr .6fr 1.4fr;gap:0;
   min-height:100vh;border-bottom:.5px solid var(--line);
 }
-.manifesto__col{padding:clamp(13rem,26vh,24rem) var(--gut) clamp(15rem,29vh,27rem);min-height:0}
+.manifesto__col{padding:clamp(3.5rem,8vh,7rem) var(--gut) clamp(4rem,9vh,8rem);min-height:0}
 .manifesto__left{display:flex;flex-direction:column;gap:1.2rem;border-right:.5px solid var(--line)}
 .manifesto__left .ph{flex:1;min-height:0}
 .manifesto__left .ph--tall{aspect-ratio:auto}
@@ -180,8 +181,8 @@ em{font-style:italic}
 .manifesto__draft .d-fill,.process__draft .d-fill{fill:var(--espresso)}
 .manifesto__draft .d-txt,.process__draft .d-txt{fill:var(--espresso);font-family:"Space Mono",monospace;font-size:9px;letter-spacing:.05em;opacity:.7}
 .manifesto__draft .d-num,.process__draft .d-num{fill:var(--accent);font-family:"Space Mono",monospace;font-size:9px;font-weight:700}
-.manifesto__right{display:flex;flex-direction:column;gap:1.1rem;justify-content:center}
-.manifesto__right .section-title{font-size:clamp(2.6rem,7vw,6rem)}
+.manifesto__right{display:flex;flex-direction:column;gap:2rem;justify-content:center}
+.manifesto__right .section-title{font-size:clamp(2rem,5vw,4.4rem)}
 .manifesto__right p{max-width:62ch;font-size:.9rem}
 blockquote{
   font-size:clamp(.95rem,1.25vw,1.1rem);line-height:1.4;color:var(--accent);
@@ -192,21 +193,18 @@ blockquote{
    3 · BENEFICIOS
    ===================================================================== */
 .benefits{background:var(--accent);color:var(--espresso);border-bottom:.5px solid var(--line)}
-.benefits .section-title{text-align:right}
+.benefits .section-title{text-align:right;font-size:clamp(2rem,5vw,4.4rem)}
 .benefits .section-title em{color:var(--cream)}
-.benefits .tag{color:var(--cream);border-color:var(--cream)}
-.benefits__head{padding:clamp(10rem,21vh,20rem) var(--gut) var(--gut);display:flex;flex-direction:column;align-items:flex-end;gap:1.4rem;border-bottom:.5px solid var(--line)}
+.benefits .tag{color:var(--espresso);border-color:var(--espresso)}
+.benefits__head{padding:clamp(7.5rem,16vh,15rem) var(--gut) var(--gut);display:flex;flex-direction:column;align-items:flex-end;gap:1.4rem;border-bottom:.5px solid var(--line)}
 .benefits__grid{display:grid;grid-template-columns:repeat(4,1fr)}
 .benefit{
-  padding:0;min-height:clamp(340px,36vw,440px);
+  padding:0;min-height:clamp(290px,31vw,380px);
   display:flex;flex-direction:column;gap:0;
 }
 /* sección superior · número */
-.benefit__num{
-  font-size:.8rem;color:var(--espresso);letter-spacing:.2em;
-  padding:.9rem 1.4rem;border-bottom:.5px solid var(--line);
-}
-.benefit__mark{display:block;width:24px;height:24px}
+.benefit__num{display:block;padding:.4rem 1.4rem;border-bottom:.5px solid var(--line)}
+.benefit__mark{display:none}
 .benefit__mark circle,.benefit__mark rect,.benefit__mark line,.benefit__mark path{stroke:var(--espresso);stroke-width:1.2;fill:none;stroke-linejoin:round}
 .benefit__mark .dot{fill:var(--violet);stroke:none}
 /* sección media · título + descripción */
@@ -264,7 +262,7 @@ blockquote{
    ===================================================================== */
 .services{border-bottom:.5px solid var(--line)}
 .services__head{padding:clamp(10rem,21vh,20rem) var(--gut) var(--gut);display:flex;flex-direction:column;align-items:flex-end;gap:1.4rem}
-.services__head .section-title{text-align:right}
+.services__head .section-title{text-align:right;font-size:clamp(2rem,5vw,4.4rem)}
 .services__list{list-style:none}
 .service{border-top:.5px solid var(--line)}
 .service__row{
@@ -284,17 +282,23 @@ blockquote{
 /* =====================================================================
    5 · PROCESO (scroll horizontal)
    ===================================================================== */
-.process{border-bottom:.5px solid var(--line);overflow:hidden}
+.process{overflow:hidden}
 .process__head{padding:clamp(10rem,21vh,20rem) var(--gut) var(--gut);display:flex;align-items:center;justify-content:space-between;gap:2rem}
 .process__head-text{display:flex;flex-direction:column;align-items:flex-start;gap:.8rem}
+.process__head-text .section-title{font-size:clamp(2rem,5vw,4.4rem)}
 .process__draft{width:min(58%,780px);height:auto;flex:0 0 auto;margin-right:calc(-1 * var(--gut) - 180px)}
 .process__hint{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
 .process__track{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
-  padding:var(--gut) var(--gut) clamp(10rem,21vh,20rem);border-top:.5px solid var(--line);
+  display:flex;gap:0;overflow-x:auto;overflow-y:hidden;
+  border-top:.5px solid var(--line);
+  scrollbar-width:none;-ms-overflow-style:none;cursor:grab;
+  user-select:none;-webkit-user-select:none;
 }
+.process__track:active{cursor:grabbing}
 .frame{
-  border:.5px solid var(--line);padding:1.5rem;
+  flex:0 0 min(78vw,420px);scroll-snap-align:start;
+  border-right:.5px solid var(--line);border-bottom:.5px solid var(--line);
+  padding:1.5rem;
   display:flex;flex-direction:column;gap:1rem;
 }
 .frame .ph{aspect-ratio:4/3;position:relative}
@@ -302,6 +306,7 @@ blockquote{
 .frame__step{font-size:.95rem;letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
 .frame h3{font-size:1.3rem;letter-spacing:-.02em}
 .frame p{font-size:.85rem;opacity:.85}
+.process__track::-webkit-scrollbar{display:none}
 
 /* =====================================================================
    6 · MADERAS
@@ -309,8 +314,9 @@ blockquote{
 .woods{border-bottom:.5px solid var(--line)}
 .woods__head{padding:clamp(10rem,21vh,20rem) var(--gut) var(--gut);display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
 .woods__head-main{display:flex;flex-direction:column;align-items:flex-start;gap:1.4rem}
+.woods__head-main .section-title{font-size:clamp(2rem,5vw,4.4rem)}
 /* nota técnica por familia de madera (aparece al elegir una solapa) */
-.woods__note{display:none;gap:.7rem;max-width:640px;flex:0 1 640px;margin-bottom:-4rem;transform:translateX(2.5rem)}
+.woods__note{display:none;gap:.7rem;max-width:640px;flex:0 1 640px;transform:translate(7rem,2.5rem)}
 .woods__note.is-show{display:flex}
 .woods__note .wn__svg{width:22px;flex:0 0 22px;height:auto;overflow:visible;margin-top:.2rem}
 .woods__note .a-line{stroke:var(--line);stroke-width:.5;fill:none}
@@ -331,51 +337,59 @@ blockquote{
 .woods__selector{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;height:100%}
 .wood-cell{
   text-align:left;background:none;border:none;border-bottom:.5px solid var(--line);border-right:.5px solid var(--line);
-  cursor:pointer;font-family:inherit;color:inherit;padding:1.6rem 1.4rem;
-  display:flex;flex-direction:column;gap:.3rem;transition:background .4s,color .4s;
+  cursor:pointer;font-family:inherit;color:inherit;padding:2.4rem 1.6rem;
+  min-height:clamp(155px,19vh,205px);
+  display:flex;flex-direction:column;gap:.5rem;transition:background .4s,color .4s;
 }
 .wood-cell:nth-child(2n){border-right:none}
-/* la última fila no lleva borde inferior: evita que se duplique con el borde de la sección (línea más oscura) */
+/* la última fila no lleva borde propio: la línea inferior la da el borde de la sección (una sola línea) */
 .wood-cell:nth-last-child(-n+2){border-bottom:none}
 .wood-cell__sym{font-size:2.2rem;font-weight:700;letter-spacing:-.05em}
-.wood-cell__name{font-size:.9rem;font-weight:700}
+.wood-cell__name{font-size:.9rem;font-weight:700;margin-bottom:1.5rem}
 .wood-cell__lat{font-size:.7rem;font-style:italic;opacity:.65}
 .wood-cell.is-active{background:var(--espresso);color:var(--cream)}
 .wood-cell.is-active .wood-cell__sym{color:var(--accent)}
 
-.woods__panel{padding:var(--gut);display:flex;flex-direction:column;gap:1.2rem;min-height:400px;border-left:.5px solid var(--line)}
+.woods__panel{padding:clamp(1rem,2.5vw,2rem) var(--gut) 1.3rem;display:flex;flex-direction:column;gap:1.3rem;min-height:330px;border-left:.5px solid var(--line)}
 .wp__grain{aspect-ratio:16/7;border:.5px solid var(--line)}
+/* sizing solo para la imagen suelta (placeholder) — no para las caras del flip */
+.woods__panel>.wp__grain{width:100%;max-width:80%;align-self:center}
 /* flip-card del grano de madera */
-.wp__flip{aspect-ratio:16/7;perspective:1400px;cursor:pointer}
+.wp__flip{aspect-ratio:16/7;width:100%;max-width:80%;align-self:center;perspective:1400px;cursor:pointer}
 .wp__flip:focus-visible{outline:2px solid var(--violet);outline-offset:3px}
 .wp__flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s var(--ease)}
 .wp__flip.is-flipped .wp__flip-inner{transform:rotateY(180deg)}
 .wp__flip .wp__face{position:absolute;inset:0;aspect-ratio:auto;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .wp__flip .wp__face--back{transform:rotateY(180deg)}
 .wp__flip-hint{
-  position:absolute;right:.6rem;bottom:.5rem;z-index:3;
-  font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--cream);background:rgba(42,16,5,.55);padding:.25rem .5rem;border-radius:2px;
+  position:absolute;right:.7rem;bottom:.7rem;z-index:3;
+  font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--cream);background:var(--accent);padding:.4rem .7rem;border-radius:2px;
+  box-shadow:0 2px 10px -2px rgba(42,16,5,.5);
   pointer-events:none;transition:opacity .4s;
 }
 .wp__flip.is-flipped .wp__flip-hint{opacity:0}
-.wp__title{font-size:1.6rem;letter-spacing:-.03em;line-height:1.15;min-height:3.7rem}
+.wp__title{font-size:1.3rem;letter-spacing:-.03em;line-height:1.15}
 .wp__grade{align-self:flex-start;color:var(--violet);border-color:var(--violet)}
-.wp__desc{font-size:.9rem;opacity:.9;min-height:5.8rem}
-.wp__specs{display:flex;gap:1.5rem;flex-wrap:wrap;border-top:.5px solid var(--line);padding-top:1rem}
+.wp__desc{font-size:.9rem;opacity:.9;min-height:3.2rem}
+.wp__specs{display:flex;gap:1.5rem;flex-wrap:wrap;padding-top:.4rem}
 .wp__specs div b{display:block;font-size:1.3rem;color:var(--accent)}
 .wp__specs div span{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
 /* gráfico de frecuencias */
-.wp__freq{display:flex;align-items:flex-end;gap:.4rem;height:90px;border-bottom:.5px solid var(--line)}
-.wp__freq .bar{flex:1;background:var(--violet);transition:height .6s var(--ease);position:relative}
-.wp__freq .bar span{position:absolute;bottom:-1.2rem;left:0;right:0;text-align:center;font-size:.55rem;letter-spacing:.05em;opacity:.7}
-.wp__freqcap{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;opacity:.6;margin-top:1.2rem}
+.wp__freq{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:1rem 2rem}
+.wp__freq-row{display:flex;align-items:center;gap:.6rem}
+.wp__freq-label{font-size:.85rem}
+.wp__dots{display:flex;gap:.5rem}
+.wp__dot{width:11px;height:11px;border-radius:50%;background:var(--accent);opacity:.22;transition:opacity .5s var(--ease)}
+.wp__dot.is-on{opacity:1}
+.wp__freqcap{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;opacity:.6;margin-top:.4rem}
 
 /* =====================================================================
    7 · CURSOS
    ===================================================================== */
 .courses{border-bottom:.5px solid var(--line)}
 .courses__head{padding:clamp(10rem,21vh,20rem) var(--gut) var(--gut);display:flex;flex-direction:column;align-items:flex-start;gap:1.4rem}
+.courses__head .section-title{font-size:clamp(2rem,5vw,4.4rem)}
 .courses__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;padding:var(--gut) clamp(1.5rem,3vw,3rem) clamp(10rem,21vh,20rem);border-top:.5px solid var(--line)}
 .course{
   position:relative;background:var(--cream);border:.5px solid var(--line);
@@ -390,8 +404,8 @@ blockquote{
 }
 .course:hover .course__frame rect{stroke-dashoffset:0}
 .course__img{
-  align-self:center;width:clamp(120px,12vw,180px);aspect-ratio:1;border-radius:50%;
-  background:#cfc7b8 center/cover no-repeat;border:.5px solid var(--line);
+  align-self:stretch;margin:-1.4rem -1.6rem 1rem;
+  aspect-ratio:3/2;background:#cfc7b8 center/cover no-repeat;
 }
 .course__img--criolla{background-image:url("../assets/guitarracriolla.jpg")}
 .course__img--electrica{background-image:url("../assets/guitarraelectrica.jpg")}
@@ -435,7 +449,9 @@ blockquote{
 .vip__text .tag{color:var(--cream);border-color:rgba(250,246,238,.45);align-self:flex-start}
 .vip__text p{max-width:69ch;opacity:.85;font-size:.95rem}
 .vip__soon{color:var(--accent)!important;opacity:1!important;font-style:italic}
-.vip__mock{display:flex;flex-direction:column;gap:1.2rem;justify-content:center}
+.vip__mock{display:flex;flex-direction:row;flex-wrap:nowrap;gap:1.5rem;justify-content:center;align-items:flex-end}
+.vip__mock-cards{display:flex;flex-direction:column;gap:1.2rem;flex:0 0 auto}
+.vip__mock .mock__annot{flex:0 1 340px;margin-top:0}
 .mock{background:#1c0a03;border:.5px solid rgba(250,246,238,.15);border-radius:6px;padding:1.2rem;display:flex;flex-direction:column;gap:.8rem}
 .mock--phone{max-width:320px}
 .mock__bar{display:flex;gap:.4rem}
@@ -477,6 +493,7 @@ blockquote{
    ===================================================================== */
 .reviews{border-bottom:.5px solid var(--line)}
 .reviews__head{padding:clamp(10rem,21vh,20rem) var(--gut) var(--gut);display:flex;flex-direction:column;align-items:flex-start;gap:1.4rem}
+.reviews__head .section-title{font-size:clamp(2rem,5vw,4.4rem)}
 .reviews__body{
   display:grid;grid-template-columns:1.5fr 1fr;gap:0;
   border-top:.5px solid var(--line);align-items:center;
@@ -485,8 +502,6 @@ blockquote{
 .rev-carousel{
   position:relative;height:70vh;overflow-y:auto;scroll-snap-type:y proximity;
   border-right:.5px solid var(--line);scrollbar-width:none;
-  -webkit-mask-image:linear-gradient(180deg,transparent,#000 16%,#000 84%,transparent);
-          mask-image:linear-gradient(180deg,transparent,#000 16%,#000 84%,transparent);
 }
 .rev-carousel::-webkit-scrollbar{display:none}
 .rev-track{
@@ -495,7 +510,7 @@ blockquote{
 .rev-card{
   flex:0 0 auto;width:min(62%,420px);scroll-snap-align:center;cursor:pointer;
   display:flex;flex-direction:column;gap:.7rem;
-  opacity:.35;transform:scale(.92);transition:opacity .45s var(--ease),transform .45s var(--ease);
+  opacity:1;transform:none;transition:opacity .45s var(--ease),transform .45s var(--ease);
 }
 .rev-card.is-active{opacity:1;transform:scale(1)}
 .rev-card__img{
@@ -525,12 +540,11 @@ blockquote{
 /* =====================================================================
    RESEÑAS · marquee automático (testimonios)
    ===================================================================== */
-.testi{border-bottom:.5px solid var(--line);overflow:hidden;padding-bottom:clamp(10rem,21vh,20rem)}
+.testi{border-bottom:.5px solid var(--line);overflow:hidden;padding-bottom:clamp(5.5rem,13vh,12rem)}
 .testi__head{padding:clamp(10rem,21vh,20rem) var(--gut) var(--gut);display:flex;flex-direction:column;align-items:flex-start;gap:1.4rem}
+.testi__head .section-title{font-size:clamp(2rem,5vw,4.4rem)}
 .testi__viewport{
   overflow:hidden;border-top:.5px solid var(--line);padding:var(--gut) 0;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
-          mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
 }
 .testi__track{display:flex;gap:1.5rem;width:max-content;animation:testi-scroll 90s linear infinite}
 @keyframes testi-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -551,6 +565,7 @@ blockquote{
    ===================================================================== */
 .faq{border-bottom:.5px solid var(--line)}
 .faq__head{padding:clamp(10rem,21vh,20rem) var(--gut) var(--gut);display:flex;flex-direction:column;align-items:flex-start;gap:1.4rem}
+.faq__head .section-title{font-size:clamp(2rem,5vw,4.4rem)}
 .faq__list{border-top:.5px solid var(--line)}
 .qa{border-bottom:.5px solid var(--line)}
 .qa__q{
@@ -578,9 +593,9 @@ blockquote{
 .cta__marquee-track{display:flex;width:max-content;animation:marquee 40s linear infinite}
 .cta__marquee-track span{white-space:nowrap;font-size:.8rem;letter-spacing:.3em;text-transform:uppercase}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.cta__inner{padding:clamp(10rem,21vh,20rem) var(--gut);display:flex;flex-direction:column;gap:1.5rem;position:relative}
+.cta__inner{padding:clamp(6rem,14vh,13rem) var(--gut);display:flex;flex-direction:column;gap:1.5rem;position:relative}
 .cta__title{
-  font-size:clamp(2.4rem,7vw,6rem);font-weight:700;line-height:.95;letter-spacing:-.05em;
+  font-size:clamp(2rem,5vw,4.4rem);font-weight:700;line-height:.95;letter-spacing:-.05em;
   max-width:23ch;
 }
 .cta__title em{color:var(--cream)}
@@ -603,6 +618,8 @@ blockquote{
 .footer__brand{grid-column:1/2}
 .footer__brand p{font-size:.8rem;opacity:.6;margin-top:.8rem;max-width:30ch}
 .footer__col{display:flex;flex-direction:column;gap:.35rem}
+.footer__nav-links{column-count:2;column-gap:2.2rem}
+.footer__nav-links a{display:block;margin-bottom:.35rem;break-inside:avoid;white-space:nowrap}
 .footer__col h4{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
 .footer__col p,.footer__col a{font-size:.8rem;opacity:.75;transition:opacity .3s,color .3s}
 .footer__col a:hover{opacity:1;color:var(--accent)}
@@ -670,7 +687,6 @@ blockquote{
   .manifesto__draft{display:none}
   .process__head{flex-direction:column;align-items:flex-start}
   .process__draft{display:none}
-  .process__track{grid-template-columns:1fr}
   .benefits__grid{grid-template-columns:1fr 1fr}
   .benefit:nth-child(2n){border-right:none}
   .benefit{border-bottom:.5px solid var(--line)}

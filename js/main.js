@@ -53,7 +53,7 @@
     redwood: {
       cat: "resonantes", sym: "Rw",
       title: "Redwood Burl",
-      lat: "Sequoia sempervirens (Burl Figure)",
+      lat: "Sequoia sempervirens",
       grade: "Master Grade · Burl Figure",
       grain: "url(assets/redwood.jpg) center/cover no-repeat",
       back: "url(assets/madera_5.jpg) center/cover no-repeat",
@@ -82,7 +82,7 @@
       lat: "Acer macrophyllum",
       grade: "Master Grade · Quilt Figure",
       grain: "url(assets/quilted.png) center/cover no-repeat",
-      back: "url(assets/madera_10.png) center/cover no-repeat",
+      back: "url(assets/madera_10.jpg) center/cover no-repeat",
       desc: "Destaca por su espectacular figura tridimensional con efecto acolchado que cambia según la luz. Produce un sonido brillante, preciso y muy definido.",
       use: "Fondos, aros, tapas decorativas y cuerpos de instrumentos premium.",
       density: "≈ 0,56 g/cm³",
@@ -117,10 +117,10 @@
     },
     nogal: {
       cat: "estabilidad", sym: "Nc",
-      title: "Nogal Claro",
-      lat: "Juglans hindsii × Juglans regia",
+      title: "Nogal",
+      lat: "Juglans regia",
       grade: "Master Grade · Figura natural",
-      grain: "url(assets/nogal.png) center/cover no-repeat",
+      grain: "url(assets/nogal.jpg) center/cover no-repeat",
       back: "url(assets/madera_9.jpg) center/cover no-repeat",
       desc: "Presenta una combinación de tonos marrones, dorados y vetas oscuras muy marcadas. Ofrece un sonido equilibrado, con graves profundos, medios cálidos y agudos suaves.",
       use: "Fondos, aros y cuerpos de instrumentos personalizados de alta gama.",
@@ -134,7 +134,7 @@
       lat: "Dalbergia latifolia",
       grade: "Grado Histórico",
       grain: "url(assets/palisandro.jpg) center/cover no-repeat",
-      back: "url(assets/madera_2.jpg) center/cover no-repeat",
+      back: "url(assets/mastil1.jpg) center/cover no-repeat",
       flip: true,
       desc: "Sonido sumamente resonante: graves profundos, agudos metálicos cristalinos y sustain muy prolongado. Marrón chocolate con líneas de crecimiento negras y destellos naranjas. Lotes antiguos pre-convención con trazabilidad legal.",
       use: "Fondos y aros de guitarras acústicas y clásicas de concierto.",
@@ -147,7 +147,8 @@
       title: "Ébano Macassar",
       lat: "Diospyros celebica",
       grade: "Master Grade · Exotic Figure",
-      grain: "linear-gradient(105deg,#241a12,#3d2c1c 40%,#5a4128 60%,#1a120c)",
+      grain: "url(assets/ebanom.png) center/cover no-repeat",
+      back: "url(assets/mastil2.jpg) center/cover no-repeat",
       desc: "Se distingue por su combinación de vetas negras y marrón oscuro con un patrón lineal muy elegante. Su elevada densidad proporciona un ataque rápido, gran definición y una respuesta extremadamente precisa.",
       use: "Diapasones, puentes, clavijas y detalles decorativos en instrumentos de alta gama.",
       density: "≈ 1,05 g/cm³",
@@ -159,7 +160,8 @@
       title: "Snakewood",
       lat: "Brosimum guianense",
       grade: "Master Grade · Exotic Figure",
-      grain: "linear-gradient(105deg,#5a2414,#8a3f22 40%,#b06034 60%,#3e1810)",
+      grain: "url(assets/snakewood.jpg) center/cover no-repeat",
+      back: "url(assets/mastil3.jpg) center/cover no-repeat",
       desc: "Reconocida por su llamativo dibujo que recuerda a la piel de una serpiente, combina una dureza excepcional con una gran estabilidad. Produce un sonido brillante, muy definido y con excelente articulación.",
       use: "Diapasones, puentes, cordales, accesorios y detalles exclusivos en instrumentos premium.",
       density: "≈ 1,20 g/cm³",
@@ -169,9 +171,10 @@
     manchinga: {
       cat: "dureza", sym: "Ms",
       title: "Manchinga Spalted",
-      lat: "Brosimum utile (Spalted Figure)",
+      lat: "Brosimum utile",
       grade: "Master Grade · Spalted Figure",
-      grain: "linear-gradient(105deg,#8a6f4a,#b39668 40%,#d8c091 60%,#6e5636)",
+      grain: "url(assets/spalted.jpg) center/cover no-repeat",
+      back: "url(assets/mastil4.jpg) center/cover no-repeat",
       desc: "Se caracteriza por sus líneas oscuras generadas naturalmente durante el proceso de spalting, creando un patrón único e irrepetible. Ofrece un sonido equilibrado, con buena proyección y riqueza armónica.",
       use: "Fondos, aros, tapas decorativas y detalles exclusivos en instrumentos personalizados.",
       density: "≈ 0,78 g/cm³",
@@ -181,6 +184,13 @@
   };
 
   const panel = $("#woodPanel");
+  // convierte un porcentaje (0-100) en una fila de 5 puntos rellenos
+  const freqDots = (pct) => {
+    const on = Math.round(pct / 20);
+    let s = "";
+    for (let i = 0; i < 5; i++) s += `<i class="wp__dot${i < on ? " is-on" : ""}"></i>`;
+    return s;
+  };
   function renderWood(key) {
     const w = WOODS[key];
     const grainStyle = `background:${w.grain}${w.flip ? ";transform:scaleX(-1)" : ""}`;
@@ -201,16 +211,10 @@
       <span class="tag wp__grade">${w.grade}</span>
       <p class="wp__desc">${w.desc}</p>
       <div class="wp__freq">
-        <div class="bar" style="height:${w.freq[0]}%"><span>GRAVES</span></div>
-        <div class="bar" style="height:${w.freq[1]}%"><span>MEDIOS</span></div>
-        <div class="bar" style="height:${w.freq[2]}%"><span>AGUDOS</span></div>
+        <div class="wp__freq-row"><span class="wp__freq-label">Graves</span><span class="wp__dots">${freqDots(w.freq[0])}</span></div>
+        <div class="wp__freq-row"><span class="wp__freq-label">Medios</span><span class="wp__dots">${freqDots(w.freq[1])}</span></div>
+        <div class="wp__freq-row"><span class="wp__freq-label">Agudos</span><span class="wp__dots">${freqDots(w.freq[2])}</span></div>
       </div>
-      <p class="wp__freqcap">Respuesta en frecuencias · normalizada</p>
-      <div class="wp__specs">
-        <div><b>${w.density}</b><span>Densidad</span></div>
-        <div><b>${w.speed}</b><span>Velocidad del sonido</span></div>
-      </div>
-      <p class="wp__desc"><strong>Uso óptimo:</strong> ${w.use}</p>
     `;
     const flip = $(".wp__flip", panel);
     if (flip) {
@@ -291,8 +295,8 @@
   const REVIEWS = [
     { img: "rev-1", name: "Nadia Ferrán", role: "Concertista clásica", years: 25,
       text: "Concertista clásica de trayectoria internacional. En el taller acompaña la construcción y el ajuste de guitarras de concierto, aportando su oído de intérprete a cada tapa armónica." },
-    { img: "rev-2", name: "Mateo Alvear", role: "Guitarrista de sesión", years: 20,
-      text: "Guitarrista de sesión con más de veinte años de escenario. Enseña el proceso completo de la guitarra eléctrica: ruteado del cuerpo, electrónica y puesta a punto final." },
+    { img: "rev-2", name: "Mateo Alvear", role: "Guitarrista clásico", years: 20,
+      text: "Guitarrista clásico con más de veinte años de escenario. Enseña el proceso completo de la guitarra criolla: selección de la madera, construcción de la caja armónica y barniz a muñequilla." },
     { img: "rev-3", name: "Sofia Lindqvist", role: "Violinista · Ópera de Estocolmo", years: 22,
       text: "Violinista de la Ópera de Estocolmo. Transmite las proporciones de Cremona, el tallado de bóvedas y el ajuste tonal que dan voz a cada violín." },
     { img: "rev-6", name: "Diego Sauer", role: "Luthier & intérprete", years: 40,
@@ -403,6 +407,22 @@
       </article>`;
     const html = TESTIMONIALS.map(cardHTML).join("");
     testiTrack.innerHTML = html + html; // duplicado para el loop continuo
+  }
+
+  /* ---------- Proceso · arrastrar para desplazar (drag scroll) ---------- */
+  const track = $("#processTrack");
+  if (track) {
+    let down = false, startX = 0, scroll = 0;
+    track.addEventListener("mousedown", e => {
+      down = true; startX = e.pageX; scroll = track.scrollLeft;
+      e.preventDefault();
+    });
+    window.addEventListener("mouseup", () => { down = false; });
+    track.addEventListener("mousemove", e => {
+      if (!down) return;
+      e.preventDefault();
+      track.scrollLeft = scroll - (e.pageX - startX) * 1.4;
+    });
   }
 
   /* ---------- SECCIÓN 10 · FAQ (acordeón) ---------- */
