@@ -7,6 +7,24 @@
   const $  = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 
+  /* ---------- Preloader (pantalla de carga) ---------- */
+  const preloader = $("#preloader");
+  if (preloader) {
+    const start = Date.now();
+    const MIN = 900;   // tiempo mínimo visible para que no "parpadee"
+    const hidePreloader = () => {
+      const wait = Math.max(0, MIN - (Date.now() - start));
+      setTimeout(() => preloader.classList.add("is-hidden"), wait);
+    };
+    if (document.readyState === "complete") {
+      hidePreloader();
+    } else {
+      window.addEventListener("load", hidePreloader);
+      // fallback por si algún recurso tarda demasiado
+      setTimeout(() => preloader.classList.add("is-hidden"), 6000);
+    }
+  }
+
   /* ---------- NAV móvil + sombra al hacer scroll ---------- */
   const nav = $("#nav");
   const burger = $("#burger");
