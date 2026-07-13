@@ -621,7 +621,7 @@
           io.unobserve(en.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.01 });
     targets.forEach(t => io.observe(t));
   } else {
     targets.forEach(t => t.classList.add("is-in"));

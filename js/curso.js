@@ -218,7 +218,7 @@
       entries.forEach(en => {
         if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.01 });
     targets.forEach(t => io.observe(t));
 
     const earlyMobileSections = $$(".cd-method, .cd-tools");

@@ -138,4 +138,18 @@
     }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
     $$("section[id]").forEach(s => io.observe(s));
   }
+
+  /* ---------- Reveal on scroll (aparición al asomar el 1%) ---------- */
+  const revealTargets = $$(".lib-hero, .lib-section > *");
+  revealTargets.forEach(t => t.classList.add("reveal"));
+  if ("IntersectionObserver" in window) {
+    const revIO = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) { en.target.classList.add("is-in"); revIO.unobserve(en.target); }
+      });
+    }, { threshold: 0.01 });
+    revealTargets.forEach(t => revIO.observe(t));
+  } else {
+    revealTargets.forEach(t => t.classList.add("is-in"));
+  }
 })();
