@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/curso.css" />
+  <link rel="stylesheet" href="css/styles.css?v=12" />
+  <link rel="stylesheet" href="css/curso.css?v=19" />
 </head>
 <body>
 
@@ -62,8 +62,21 @@
       <span class="cd-tline cd-tline--h2"></span>
       <span class="cd-tline cd-tline--v1"></span>
       <!-- imágenes escalonadas -->
-      <div class="cd-himg cd-himg--top"></div>
-      <div class="cd-himg cd-himg--bot"></div>
+      <div class="cd-himg cd-himg--top">
+        <div class="cd-hcroquis" aria-hidden="true">
+          <span class="cd-hcroquis__node"></span>
+          <span class="cd-hcroquis__tag"><b>01</b> · AROS</span>
+          <span class="cd-hcroquis__dim">R 120,5</span>
+        </div>
+      </div>
+      <div class="cd-himg cd-himg--bot">
+        <div class="cd-hcroquis" aria-hidden="true">
+          <span class="cd-hcroquis__node"></span>
+          <span class="cd-hcroquis__tag"><b>02</b> · TAPA ARMÓNICA</span>
+          <span class="cd-hcroquis__dim">480 mm</span>
+          <span class="cd-hcroquis__note">ESC. 1:4 · f₀ 110 Hz</span>
+        </div>
+      </div>
       <!-- anotaciones y cotas -->
       <span class="cd-anno cd-anno--1"><b>01</b> · AROS · R 120,5</span>
       <span class="cd-dot cd-dot--1"></span>
@@ -71,11 +84,14 @@
       <span class="cd-dot cd-dot--2"></span>
       <span class="cd-anno cd-anno--esc">ESC. 1:4 · f₀ 110 Hz</span>
     </div>
+
+    <!-- puntitos del carrusel del hero (solo mobile) -->
+    <div class="cd-hero__dots" id="cdHeroDots"></div>
   </section>
 
   <!-- ============ FICHA DEL CURSO ============ -->
   <section class="cd-ficha" id="ficha">
-    <span class="cd-ficha__label">Ficha<br />del curso</span>
+    <span class="cd-ficha__label">Ficha <br />del curso</span>
     <div class="cd-ficha__grid">
       <div><b>Básico</b><span>Nivel principiante</span></div>
       <div><b>3 meses</b><span>13 clases</span></div>
@@ -87,16 +103,16 @@
   <!-- ============ 2 · LA TRANSFORMACIÓN ============ -->
   <section class="cd-promise reveal" id="transformacion">
     <span class="tag tag--violet">01 / La transformación</span>
-    <h2 class="section-title">De admirar una guitarra<br />a <em>firmar</em> la tuya.</h2>
+    <h2 class="section-title">De admirar una guitarra <br class="cd-promise__br-d" />a <br class="cd-promise__br-m" /><em>firmar</em> la tuya.</h2>
     <div class="cd-promise__grid">
       <div class="cd-transform">
         <span class="cd-transform__stage">Hoy</span>
-        <p>Comprás instrumentos producidos en serie, diseñados para todos. El sonido que buscás vive en tu cabeza, no en tus manos.</p>
+        <p>Comprás instrumentos producidos en serie, diseñados para todos.</p>
       </div>
       <div class="cd-transform__arrow" aria-hidden="true">→</div>
       <div class="cd-transform cd-transform--after">
         <span class="cd-transform__stage">Al terminar</span>
-        <p>Te llevás una guitarra construida y firmada por vos, y el criterio técnico para entender —y crear— el sonido de cualquier instrumento.</p>
+        <p>Te llevás una guitarra hecha por vos y el conocimiento para construir muchas más.</p>
       </div>
     </div>
   </section>
@@ -107,27 +123,72 @@
       <div class="cd-audience__head">
         <span class="tag tag--violet">02 / ¿Es para vos?</span>
         <h2 class="section-title">Este curso es<br />para vos <em>si...</em></h2>
+        <p class="cd-audience__intro">Tocá cada tarjeta para girarla.</p>
       </div>
       <div class="cd-fit-list">
-        <article class="cd-fit">
-          <h3>Querés construir la guitarra que siempre imaginaste</h3>
-          <p>Nunca trabajaste la madera, pero querés crear un instrumento único desde cero.</p>
-          <span class="cd-fit__note">No necesitás experiencia previa.</span>
+        <article class="cd-fit" tabindex="0" role="button" aria-pressed="false" aria-label="Girar tarjeta: Querés construir la guitarra que siempre imaginaste">
+          <div class="cd-fit__inner">
+            <div class="cd-fit__face cd-fit__face--front" aria-hidden="false">
+              <div class="cd-fit__image">
+                <img src="assets/celda1.jpg" alt="" loading="lazy" decoding="async" />
+                <span class="cd-fit__hint">tocá para girar ↻</span>
+              </div>
+              <div class="cd-fit__front-title"><h3>Querés construir la guitarra que siempre imaginaste</h3></div>
+            </div>
+            <div class="cd-fit__face cd-fit__face--back" aria-hidden="true">
+              <h3>DEL SUEÑO AL TALLER</h3>
+              <p>Nunca trabajaste la madera, pero querés crear un instrumento único desde cero.</p>
+              <span class="cd-fit__note">No necesitás experiencia previa.</span>
+            </div>
+          </div>
         </article>
-        <article class="cd-fit">
-          <h3>Querés entender cómo nace el sonido</h3>
-          <p>Te interesa descubrir cómo las maderas, las proporciones y la construcción influyen en el carácter de un instrumento.</p>
-          <span class="cd-fit__note">Ideal para músicos curiosos.</span>
+        <article class="cd-fit" tabindex="0" role="button" aria-pressed="false" aria-label="Girar tarjeta: Querés entender cómo nace el sonido">
+          <div class="cd-fit__inner">
+            <div class="cd-fit__face cd-fit__face--front" aria-hidden="false">
+              <div class="cd-fit__image">
+                <img src="assets/seccion2.jpg" alt="" loading="lazy" decoding="async" />
+                <span class="cd-fit__hint">tocá para girar ↻</span>
+              </div>
+              <div class="cd-fit__front-title"><h3>Querés entender cómo nace el sonido</h3></div>
+            </div>
+            <div class="cd-fit__face cd-fit__face--back" aria-hidden="true">
+              <h3>MÁS ALLÁ DE TOCAR</h3>
+              <p>Te interesa descubrir cómo las maderas, las proporciones y la construcción influyen en el carácter de un instrumento.</p>
+              <span class="cd-fit__note">Ideal para músicos curiosos.</span>
+            </div>
+          </div>
         </article>
-        <article class="cd-fit">
-          <h3>Querés aprender un oficio artesanal</h3>
-          <p>Buscás una experiencia práctica donde cada etapa del proceso tenga un propósito y un resultado tangible.</p>
-          <span class="cd-fit__note">Construcción 100% manual.</span>
+        <article class="cd-fit" tabindex="0" role="button" aria-pressed="false" aria-label="Girar tarjeta: Querés aprender un oficio artesanal">
+          <div class="cd-fit__inner">
+            <div class="cd-fit__face cd-fit__face--front" aria-hidden="false">
+              <div class="cd-fit__image">
+                <img src="assets/seccion3.jpg" alt="" loading="lazy" decoding="async" />
+                <span class="cd-fit__hint">tocá para girar ↻</span>
+              </div>
+              <div class="cd-fit__front-title"><h3>Querés aprender un oficio artesanal</h3></div>
+            </div>
+            <div class="cd-fit__face cd-fit__face--back" aria-hidden="true">
+              <h3>EL VALOR DEL PROCESO</h3>
+              <p>Buscás una experiencia práctica donde cada etapa del proceso tenga un propósito y un resultado tangible.</p>
+              <span class="cd-fit__note">Construcción 100% manual.</span>
+            </div>
+          </div>
         </article>
-        <article class="cd-fit">
-          <h3>Querés dar el primer paso hacia la luthería</h3>
-          <p>Buscás una formación completa que te permita seguir desarrollándote como constructor de instrumentos.</p>
-          <span class="cd-fit__note">Base técnica para continuar creciendo.</span>
+        <article class="cd-fit" tabindex="0" role="button" aria-pressed="false" aria-label="Girar tarjeta: Querés convertir tu pasión en un oficio">
+          <div class="cd-fit__inner">
+            <div class="cd-fit__face cd-fit__face--front" aria-hidden="false">
+              <div class="cd-fit__image">
+                <img src="assets/seccion4.jpg" alt="" loading="lazy" decoding="async" />
+                <span class="cd-fit__hint">tocá para girar ↻</span>
+              </div>
+              <div class="cd-fit__front-title"><h3>Querés convertir tu pasión en un oficio</h3></div>
+            </div>
+            <div class="cd-fit__face cd-fit__face--back" aria-hidden="true">
+              <h3>SEGUÍ EVOLUCIONANDO</h3>
+              <p>Buscás una formación completa que te permita seguir desarrollándote como constructor de instrumentos.</p>
+              <span class="cd-fit__note">Base técnica para continuar creciendo.</span>
+            </div>
+          </div>
         </article>
       </div>
     </div>
@@ -152,7 +213,7 @@
         </button>
         <div class="cd-module__body">
           <ol class="cd-classes">
-            <li><span class="cd-class__n">01</span><div><p style="max-width:92ch">Reunión 1 a 1 con el maestro luthier para definir tus objetivos y diseñar cada detalle del instrumento, desde sus especificaciones técnicas hasta su ergonomía y estética.</p></div></li>
+            <li><span class="cd-class__n">01</span><div><p style="max-width:none">Reunión 1 a 1 con el maestro luthier para definir tus objetivos y diseñar cada detalle del instrumento.</p></div></li>
           </ol>
         </div>
       </div>
@@ -192,7 +253,7 @@
       <div class="cd-module">
         <button class="cd-module__head" aria-expanded="false">
           <span class="cd-module__fase">Fase IV</span>
-          <span class="cd-module__title">Construcción y ensamblaje del mástil</span>
+          <span class="cd-module__title">Ensamblaje del mástil</span>
           <span class="cd-module__range">Clases 08–10</span>
           <span class="cd-module__icon">+</span>
         </button>
@@ -263,7 +324,7 @@
     </ul>
     <div class="cd-includes__extra">
       <h3 class="cd-includes__extra-title">Y no solo eso...</h3>
-      <p class="cd-includes__extra-text">Además del instrumento construido durante el curso, recibís los accesorios esenciales para transportarlo, protegerlo y comenzar a disfrutarlo desde el primer día.</p>
+      <p class="cd-includes__extra-text">Junto con tu guitarra, recibís todo lo necesario para cuidarla y comenzar a disfrutarla.</p>
       <div class="cd-kit">
         <img src="assets/kit.jpg" alt="Kit de accesorios incluidos" class="cd-includes__extra-img" />
         <span class="cd-tline cd-tline--kit-h1" aria-hidden="true"></span>
@@ -318,7 +379,7 @@
   <section class="cd-tools reveal" id="herramientas">
     <div class="cd-tools__head">
       <span class="tag tag--violet">06 / Herramientas profesionales</span>
-      <h2 class="section-title">Familiarizate con las<br />herramientas del <em>oficio</em>.</h2>
+      <h2 class="section-title">Familiarizate con <br class="cd-tools__br-m" />las<br class="cd-tools__br-d" /> herramientas<br class="cd-tools__br-m" /> del <em>oficio</em>.</h2>
       <p>Cada herramienta tiene un propósito dentro del proceso de construcción. Durante el curso aprenderás a utilizarlas con precisión para transformar la madera en un instrumento.</p>
     </div>
     <div class="cd-tools__list">
@@ -514,15 +575,15 @@
       <div class="cd-guarantee__cols">
         <div class="cd-guarantee__col">
           <span class="cd-guarantee__stat">100%</span>
-          <p><b>Garantía de primera clase.</b> Si al terminar tu primer encuentro sentís que este camino no es para vos, te devolvemos el 100% de la inversión. Sin preguntas.</p>
+          <p><b>Garantía de primera clase.</b> Si al finalizar el primer encuentro decidís no seguir, recuperás el 100% de tu inversión.</p>
         </div>
         <div class="cd-guarantee__col">
           <span class="cd-guarantee__stat">Sin límite</span>
-          <p><b>Terminás, garantizado.</b> El programa no cierra hasta que tu guitarra esté completa y suene. Si necesitás una clase extra de ajuste, es sin costo.</p>
+          <p><b>Terminás tu guitarra, garantizado.</b> Si necesitás una clase más para ajustarla, la incluimos sin costo.</p>
         </div>
         <div class="cd-guarantee__col">
           <span class="cd-guarantee__stat">Flexible</span>
-          <p><b>Sin compromiso a largo plazo.</b> Podés pausar el programa si surge un imprevisto, sin perder tu cupo ni tu inversión.</p>
+          <p><b>Sin compromiso.</b> Si necesitás hacer una pausa, conservás tu cupo y tu inversión.</p>
         </div>
       </div>
     </div>
@@ -603,7 +664,7 @@
         <p>Dejanos tus datos y el maestro luthier se pondrá en contacto con vos para agendar la entrevista inicial. Cupos limitados para la temporada en curso.</p>
         <div class="cd-cta__info">
           <div><span>Inicio</span><b>25/07/26</b></div>
-          <div><span>Horario</span><b>16:00 a 19:00</b></div>
+          <div><span>Horario</span><b><span class="cd-cta__hr-d">16:00 a 19:00</span><span class="cd-cta__hr-m">16-19 h</span></b></div>
           <div><span>Día de cursado</span><b>Jueves</b></div>
         </div>
       </div>
@@ -636,7 +697,7 @@
   <footer class="footer" id="footer">
     <div class="footer__brand">
       <a href="index.html#hero" class="nav__brand" aria-label="TRASTES · inicio"><img src="assets/logo.svg" alt="TRASTES" class="nav__logo" /><span>®</span></a>
-      <p>Cada instrumento cuenta una historia que comienza en la madera y termina en las manos de quien lo toca.</p>
+      <p>Cada instrumento cuenta una historia que comienza en la madera y termina en tus manos.</p>
       <div class="footer__social">
         <a href="#" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
@@ -671,15 +732,15 @@
       <h4>Navegación</h4>
       <div class="footer__nav-links">
         <a href="#hero">Inicio</a>
-        <a href="#es-para-vos">¿Es para vos?</a>
         <a href="#temario">Temario</a>
-        <a href="#incluye">Qué incluye</a>
-        <a href="#metodologia">Metodología</a>
-        <a href="#herramientas">Herramientas</a>
         <a href="#reseñas">Reseñas</a>
-        <a href="#garantia">Garantía</a>
-        <a href="#faq">FAQ</a>
       </div>
+    </div>
+    <div class="footer__col">
+      <h4>Cursos</h4>
+      <a href="index.html#cursos">Violín</a>
+      <a href="index.html#cursos">Guitarra eléctrica</a>
+      <a href="index.html#cursos">Bajo eléctrico</a>
     </div>
     <div class="footer__col footer__news">
       <h4>La Correspondencia</h4>

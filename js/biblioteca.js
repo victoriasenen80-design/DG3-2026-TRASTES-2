@@ -43,6 +43,14 @@
     });
   });
 
+  /* ---------- Hotspot "+" (demo) ---------- */
+  $$(".cd-kit__hotspot").forEach(h => {
+    h.addEventListener("click", () => {
+      const open = h.classList.toggle("is-open");
+      h.setAttribute("aria-expanded", String(open));
+    });
+  });
+
   /* ---------- Flip-card ---------- */
   $$(".wp__flip").forEach(flip => {
     const toggle = () => flip.classList.toggle("is-flipped");
@@ -67,34 +75,47 @@
 
   /* ---------- Modal ---------- */
   const modal = $("#modal");
-  const openBtn = $("#libOpenModal");
-  function openModal() { modal.classList.add("is-open"); modal.setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden"; }
-  function closeModal() { modal.classList.remove("is-open"); modal.setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; }
-  if (openBtn) openBtn.addEventListener("click", openModal);
-  $$("[data-close]", modal).forEach(el => el.addEventListener("click", closeModal));
-  document.addEventListener("keydown", e => { if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal(); });
+  if (modal) {
+    const openBtn = $("#libOpenModal");
+    const openModal = () => { modal.classList.add("is-open"); modal.setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden"; };
+    const closeModal = () => { modal.classList.remove("is-open"); modal.setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; };
+    if (openBtn) openBtn.addEventListener("click", openModal);
+    $$("[data-close]", modal).forEach(el => el.addEventListener("click", closeModal));
+    document.addEventListener("keydown", e => { if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal(); });
+  }
 
-  /* ---------- Menú móvil del TOC ---------- */
-  const toc = $("#toc");
-  const tocBurger = $("#tocBurger");
-  tocBurger.addEventListener("click", () => {
-    const open = toc.classList.toggle("is-open");
-    tocBurger.setAttribute("aria-expanded", String(open));
-  });
-  $$("#toc a").forEach(a => a.addEventListener("click", () => {
-    if (window.innerWidth <= 900) { toc.classList.remove("is-open"); tocBurger.setAttribute("aria-expanded", "false"); }
-  }));
+  /* ---------- NAV móvil (hamburguesa) ---------- */
+  const nav = $("#nav");
+  const burger = $("#burger");
+  if (nav && burger) {
+    burger.addEventListener("click", () => {
+      const open = nav.classList.toggle("is-open");
+      burger.setAttribute("aria-expanded", String(open));
+    });
+    $$(".nav__links a").forEach(a => a.addEventListener("click", () => {
+      nav.classList.remove("is-open");
+      burger.setAttribute("aria-expanded", "false");
+    }));
+  }
 
-  /* ---------- TOC · resaltar sección activa ---------- */
-  const links = $$("#toc a");
-  const map = {};
-  links.forEach(a => { const id = a.getAttribute("href").slice(1); map[id] = a; });
-  if ("IntersectionObserver" in window) {
+  /* ---------- Nav · resaltar el grupo activo según el scroll ---------- */
+  // cada grupo empieza en su primera sección
+  const groups = [
+    { link: 'a[href="#colores"]', from: "colores", to: "graficos" },   // Fundamentos
+    { link: 'a[href="#botones"]', from: "botones", to: "frecuencias" }, // Componentes
+    { link: 'a[href="#estados"]', from: "estados", to: "patrones" }     // Sistema
+  ];
+  const navLinks = $$(".nav__links a");
+  const groupOf = { colores:0, tipografia:0, grilla:0, forma:0, graficos:0,
+    botones:1, tags:1, cards:1, formularios:1, acordeon:1, navegacion:1, modal:1, audio:1, flip:1, nota:1, carrusel:1, marquee:1, frecuencias:1,
+    estados:2, patrones:2 };
+  if ("IntersectionObserver" in window && navLinks.length === 3) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach(en => {
         if (en.isIntersecting) {
-          links.forEach(l => l.classList.remove("is-active"));
-          if (map[en.target.id]) map[en.target.id].classList.add("is-active");
+          const g = groupOf[en.target.id];
+          if (g === undefined) return;
+          navLinks.forEach((l, i) => l.classList.toggle("is-active", i === g));
         }
       });
     }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });

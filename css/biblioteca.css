@@ -5,41 +5,20 @@
 
 .lib{background:var(--cream)}
 
-/* ---------------- TOPBAR ---------------- */
-.lib-topbar{
-  position:sticky;top:0;z-index:40;
-  display:flex;align-items:center;gap:1.2rem;
-  padding:.8rem clamp(1rem,3vw,2rem);
-  background:rgba(248,237,215,.9);backdrop-filter:blur(10px);
-  border-bottom:.5px solid var(--line);
-}
-.lib-brand img{height:1.9rem;width:auto;display:block}
-.lib-topbar__title{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--violet)}
-.lib-topbar__back{margin-left:auto;font-size:.78rem;color:var(--accent);transition:opacity .3s}
-.lib-topbar__back:hover{opacity:.6}
-.lib-burger{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:.3rem}
-.lib-burger span{width:22px;height:2px;background:var(--espresso)}
-
-/* ---------------- SHELL + TOC ---------------- */
-.lib-shell{display:grid;grid-template-columns:230px 1fr;align-items:start}
-.lib-toc{
-  position:sticky;top:56px;align-self:start;
-  display:flex;flex-direction:column;gap:.15rem;
-  padding:2rem 1rem;border-right:.5px solid var(--line);
-  max-height:calc(100vh - 56px);overflow-y:auto;
-}
-.lib-toc__group{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--violet);margin:1rem 0 .3rem;opacity:.8}
-.lib-toc__group:first-child{margin-top:0}
-.lib-toc a{font-size:.82rem;padding:.35rem .5rem;border-radius:2px;transition:background .25s,color .25s}
-.lib-toc a:hover{color:var(--accent)}
-.lib-toc a.is-active{background:var(--espresso);color:var(--cream)}
+/* ---------------- NAV (barra superior fija · reutiliza .nav de styles.css) ---------------- */
+/* grupo activo resaltado en la navbar */
+.nav__links a.is-active{color:var(--accent)}
+.nav__links a.is-active::after{width:100%}
 
 /* ---------------- MAIN ---------------- */
-.lib-main{min-width:0}
+/* espacio para la navbar fija + offset de los anclajes */
+.lib-main{min-width:0;padding-top:clamp(3.7rem,6vw,4.7rem)}
+.lib-hero,.lib-section{scroll-margin-top:clamp(3.7rem,6vw,4.7rem)}
 .lib-section{padding:clamp(2.5rem,5vw,4.5rem) clamp(1.4rem,4vw,4rem);border-bottom:.5px solid var(--line)}
 .lib-hdr{display:flex;flex-direction:column;align-items:flex-start;gap:1rem;margin-bottom:2rem}
 .lib-hdr .section-title{font-size:clamp(2rem,4.5vw,3.4rem)}
 .lib-hdr .section-title em{color:var(--accent)}
+.lib-hdr .lib-title--regular{font-weight:700;color:var(--espresso)}
 .lib-hdr__desc{max-width:62ch;font-size:.95rem;opacity:.9}
 
 /* HERO */
@@ -56,8 +35,25 @@
 .swatch{border:.5px solid var(--line);display:flex;flex-direction:column;overflow:hidden}
 .swatch__chip{height:120px;border:none;cursor:pointer;position:relative;transition:filter .3s}
 .swatch__chip:hover{filter:brightness(1.05)}
-.swatch__chip::after{content:"copiar HEX";position:absolute;bottom:.5rem;right:.6rem;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(248,237,215,.85);opacity:0;transition:opacity .3s}
-.swatch__chip:hover::after{opacity:1}
+/* reproductor en la fila de botones: mantiene el rect. marrón con outline claro (.mock),
+   pero con menos alto para igualarlo a los botones */
+#libAudio{padding:.55rem .9rem}
+
+/* hotspot "+" del kit (curso.css no se carga acá, así que se replica el estilo) */
+.cd-kit__hotspot{
+  width:38px;height:38px;border-radius:50%;padding:0;
+  background:var(--accent);border:1.5px solid var(--accent);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  font-family:inherit;font-size:1.3rem;line-height:1;cursor:pointer;
+  transition:transform .2s;
+}
+.cd-kit__hotspot:hover{transform:scale(1.08)}
+.cd-kit__plus{transition:transform .3s var(--ease)}
+.cd-kit__hotspot.is-open .cd-kit__plus{transform:rotate(45deg)}
+
+/* card Crema: sin hover en el chip + línea marrón arriba del título */
+.swatch--crema .swatch__chip:hover{filter:none}
+.swatch--crema .swatch__meta{border-top:.5px solid var(--line)}
 .swatch__meta{padding:1rem;display:flex;flex-direction:column;gap:.35rem}
 .swatch__meta b{font-size:.95rem}
 .swatch__hex{align-self:flex-start;background:none;border:.5px solid var(--line);border-radius:2px;font-family:inherit;font-size:.75rem;padding:.2rem .5rem;cursor:pointer;color:inherit;transition:all .25s}
@@ -93,6 +89,43 @@
 .lib-line{height:.5px;background:var(--line)}
 .lib-line:nth-child(3){background:var(--accent)}
 .lib-line:nth-child(4){background:var(--violet)}
+
+/* ---------------- FORMA / RADIOS ---------------- */
+.lib-radius-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem}
+.lib-radius-card{
+  min-height:190px;padding:1.5rem;border:.5px solid var(--line);border-radius:var(--shape-radius);
+  background:rgba(255,80,0,.05);display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:.7rem;text-align:center;
+}
+.lib-radius-card--circle{width:min(190px,100%);min-height:0;aspect-ratio:1;justify-self:center}
+.lib-radius-card b{font-size:clamp(1.25rem,2vw,1.7rem);color:var(--accent);letter-spacing:-.03em}
+.lib-radius-card span{font-size:.75rem;font-weight:700;opacity:.72}
+
+/* ---------------- FORMULARIOS ---------------- */
+/* textarea con el mismo estilo que los inputs del .dform (styles.css no lo cubre) */
+.dform textarea{
+  font-family:inherit;font-size:.9rem;padding:.7rem;
+  border:.5px solid var(--line);background:var(--cream);color:var(--espresso);
+  border-radius:2px;resize:none;text-transform:none;letter-spacing:0;
+}
+.dform textarea:focus{outline:2px solid var(--accent);border-color:var(--accent)}
+/* grilla: fila 1 = 3 campos; fila 2 = textarea (2 col) + correspondencia (1 col) */
+.dform--grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem 1.2rem;width:100%;max-width:none;align-items:start}
+.dform--grid>*:nth-child(4){grid-column:1 / span 2}
+.dform--grid>*:nth-child(5){grid-column:3 / span 1}
+/* campo "La correspondencia": mismo look de label + el newsletter compacto */
+.dform__news{display:flex;flex-direction:column;gap:.35rem}
+.dform__news>span{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+/* el contenedor flex+borde de .news está limitado al footer en styles.css: lo replicamos acá
+   (mismo borde .5px que el resto de los campos) */
+.dform__news .news{display:flex;border:.5px solid var(--line);border-radius:2px;overflow:hidden;margin-top:0}
+/* al estar dentro de .dform, la regla .dform input le agregaba un 2º borde+padding al
+   input del newsletter (borde doble = "línea gruesa"): lo devolvemos a su estilo sin borde */
+.dform__news .news input{border:none;background:none;padding:.6rem .7rem}
+@media(max-width:900px){
+  .dform--grid{grid-template-columns:1fr}
+  .dform--grid>*:nth-child(4),.dform--grid>*:nth-child(5){grid-column:auto}
+}
 
 /* ---------------- DEMOS ---------------- */
 .lib-demo{margin-bottom:1.6rem}
@@ -158,16 +191,14 @@
 
 /* ---------------- RESPONSIVE ---------------- */
 @media(max-width:900px){
-  .lib-shell{grid-template-columns:1fr}
-  .lib-toc{
-    position:fixed;top:53px;left:0;right:0;z-index:39;
-    flex-direction:row;flex-wrap:wrap;gap:.4rem;max-height:none;
-    border-right:none;border-bottom:.5px solid var(--line);background:var(--cream);
-    padding:1rem clamp(1.4rem,4vw,2rem);display:none;
-  }
-  .lib-toc.is-open{display:flex}
-  .lib-toc__group{width:100%;margin:.4rem 0 0}
-  .lib-burger{display:flex}
   .lib-grid-demo,.lib-demo--split,.lib-dodont,.lib-type-row{grid-template-columns:1fr}
+  .lib-radius-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .lib-type-row{gap:.6rem}
+}
+@media(max-width:620px){
+  .lib-radius-grid{grid-template-columns:1fr}
+  .lib-radius-card{min-height:160px}
+  .lib-radius-card--circle{min-height:0}
+  /* tarjetas: sin el rectángulo (borde) que encierra las cards en mobile */
+  #cards .lib-demo__stage{border:none;padding:0}
 }

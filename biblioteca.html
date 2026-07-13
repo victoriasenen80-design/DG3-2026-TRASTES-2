@@ -10,62 +10,35 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/biblioteca.css" />
+  <link rel="stylesheet" href="css/styles.css?v=19" />
+  <link rel="stylesheet" href="css/biblioteca.css?v=18" />
 </head>
 <body class="lib">
 
-  <!-- ===================== TOPBAR ===================== -->
-  <header class="lib-topbar">
-    <a href="index.html" class="lib-brand" aria-label="TRASTES"><img src="assets/logo.svg" alt="TRASTES" /></a>
-    <span class="lib-topbar__title">Biblioteca UX/UI</span>
-    <a href="index.html" class="lib-topbar__back">← Volver al sitio</a>
-    <button class="lib-burger" id="tocBurger" aria-label="Índice" aria-expanded="false"><span></span><span></span><span></span></button>
+  <!-- ===================== NAV ===================== -->
+  <header class="nav" id="nav">
+    <a href="index.html" class="nav__brand" aria-label="TRASTES · inicio"><img src="assets/logo.svg" alt="TRASTES" class="nav__logo" /><span>®</span></a>
+    <nav class="nav__links" aria-label="Navegación de la biblioteca">
+      <a href="#colores">Fundamentos</a>
+      <a href="#botones">Componentes</a>
+      <a href="#estados">Sistema</a>
+    </nav>
+    <a href="index.html" class="nav__cta">← Volver al sitio</a>
+    <button class="nav__burger" id="burger" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </header>
 
-  <div class="lib-shell">
-
-    <!-- ===================== TOC ===================== -->
-    <aside class="lib-toc" id="toc">
-      <p class="lib-toc__group">Fundamentos</p>
-      <a href="#colores">Color</a>
-      <a href="#tipografia">Tipografía</a>
-      <a href="#grilla">Grilla y espaciado</a>
-      <a href="#graficos">Elementos gráficos</a>
-      <p class="lib-toc__group">Componentes</p>
-      <a href="#botones">Botones</a>
-      <a href="#tags">Etiquetas</a>
-      <a href="#cards">Tarjetas</a>
-      <a href="#formularios">Formularios</a>
-      <a href="#acordeon">Acordeón</a>
-      <a href="#navegacion">Navegación</a>
-      <a href="#modal">Modal</a>
-      <a href="#audio">Reproductor</a>
-      <a href="#flip">Flip-card</a>
-      <a href="#nota">Nota técnica</a>
-      <p class="lib-toc__group">Sistema</p>
-      <a href="#estados">Estados</a>
-      <a href="#patrones">Voz y patrones</a>
-    </aside>
-
-    <!-- ===================== MAIN ===================== -->
-    <main class="lib-main">
+  <!-- ===================== MAIN ===================== -->
+  <main class="lib-main">
 
       <!-- INTRO -->
       <section id="intro" class="lib-hero">
-        <span class="tag tag--violet">Design System · v1.0</span>
-        <h1 class="lib-hero__title">Biblioteca <em>UX/UI</em>.</h1>
+        <span class="tag tag--violet">Sistema de diseño</span>
+        <h1 class="lib-hero__title">Biblioteca <em>UI</em>.</h1>
         <p class="lib-hero__lead">
-          El sistema de diseño de <b>TRASTES · Luthería de autor</b>. Reúne los fundamentos
-          visuales, los componentes reutilizables, sus estados e interacciones y las guías de
-          uso. Todo lo que ves aquí usa el mismo CSS que el sitio: es la fuente de verdad.
+          El sistema de diseño de <b>TRASTES · Luthería de autor</b>.
         </p>
-        <div class="lib-hero__meta">
-          <div><b>4</b><span>colores</span></div>
-          <div><b>1</b><span>tipografía</span></div>
-          <div><b>10+</b><span>componentes</span></div>
-          <div><b>0.5px</b><span>línea técnica</span></div>
-        </div>
       </section>
 
       <!-- ============ COLOR ============ -->
@@ -73,13 +46,12 @@
         <div class="lib-hdr">
           <span class="tag tag--violet">01 · Fundamentos</span>
           <h2 class="section-title">Color.</h2>
-          <p class="lib-hdr__desc">Paleta de alto contraste sobre fondo claro. Cada color tiene una función fija. Hacé clic en el HEX para copiarlo.</p>
         </div>
         <div class="lib-swatches">
-          <div class="swatch">
+          <div class="swatch swatch--crema">
             <button class="swatch__chip" style="background:#f8edd7" data-copy="#f8edd7" aria-label="Copiar #f8edd7"></button>
             <div class="swatch__meta">
-              <b>Crema Orgánico</b>
+              <b>Crema</b>
               <button class="swatch__hex" data-copy="#f8edd7">#f8edd7</button>
               <span>Fondo principal, secciones y contenedores.</span>
             </div>
@@ -109,46 +81,64 @@
             </div>
           </div>
         </div>
-        <p class="lib-note"><b>Soporte:</b> gris <button class="lib-inlinehex" data-copy="#cfc7b8">#cfc7b8</button> como marcador de posición de imágenes mientras se carga la foto real.</p>
       </section>
 
       <!-- ============ TIPOGRAFÍA ============ -->
       <section id="tipografia" class="lib-section">
         <div class="lib-hdr">
           <span class="tag tag--violet">01 · Fundamentos</span>
-          <h2 class="section-title">Tipo<em>grafía</em>.</h2>
-          <p class="lib-hdr__desc">Una sola familia: <b>Space Mono</b> (monoespaciada). Proyecta rigor técnico. Regular 400, Bold 700 y sus cursivas.</p>
+          <h2 class="section-title lib-title--regular">Tipografía.</h2>
+          <p class="lib-hdr__desc">Una sola familia: <b>Space Mono</b> (monoespaciada)</p>
         </div>
 
         <div class="lib-type-specimen">
           <span class="lib-type-specimen__big">Aa</span>
           <div class="lib-type-specimen__info">
             <b>Space Mono</b>
-            <span>Regular 400 · <i>Italic</i> · Bold 700 · <b><i>Bold Italic</i></b></span>
-            <span>Google Fonts · monoespaciada</span>
+            <span>Regular 400 · <i>Italic</i> · <span style="font-weight:700">Bold 700</span> · <span style="font-weight:700;font-style:italic">Bold Italic</span></span>
           </div>
         </div>
 
         <div class="lib-type-scale">
           <div class="lib-type-row">
-            <div class="lib-type-row__sample"><span class="section-title" style="font-size:2.6rem">Título H1/H2</span></div>
-            <div class="lib-type-row__spec"><b>Títulos monumentales</b><span>700 · letter-spacing −0.04em · mayúsc./minúsc. mixtas · acento en <em>naranja</em> + punto marrón</span></div>
+            <div class="lib-type-row__sample"><span style="font-size:clamp(2rem,5vw,4.4rem);font-weight:700;letter-spacing:-.05em;line-height:1.08">Título H1</span></div>
+            <div class="lib-type-row__spec"><b>Título H1</b><span>Bold 700 · clamp(2rem, 5vw, 4.4rem)</span></div>
           </div>
           <div class="lib-type-row">
-            <div class="lib-type-row__sample"><h3 style="font-size:1.15rem;font-weight:700;letter-spacing:-.02em">Subtítulo H3</h3></div>
-            <div class="lib-type-row__spec"><b>Subtítulos</b><span>700 · letter-spacing −0.02em · líneas ajustadas</span></div>
+            <div class="lib-type-row__sample"><span style="font-size:clamp(1.1rem,2.4vw,1.9rem);font-weight:700;letter-spacing:-.02em">Subtítulo 1</span></div>
+            <div class="lib-type-row__spec"><b>Subtítulo 1</b><span>Bold 700 · clamp(1.1rem, 2.4vw, 1.9rem)</span></div>
           </div>
           <div class="lib-type-row">
-            <div class="lib-type-row__sample"><i style="font-size:1rem;opacity:.85">Anotación en cursiva</i></div>
-            <div class="lib-type-row__spec"><b>Notas técnicas</b><span>Italic 400 · aire de cuaderno de bitácora del luthier</span></div>
+            <div class="lib-type-row__sample"><span style="font-size:clamp(.95rem,1.8vw,1.3rem);font-weight:700;letter-spacing:-.01em">Subtítulo 2</span></div>
+            <div class="lib-type-row__spec"><b>Subtítulo 2</b><span>Bold 700 · clamp(.95rem, 1.8vw, 1.3rem)</span></div>
           </div>
           <div class="lib-type-row">
-            <div class="lib-type-row__sample"><p style="font-size:.95rem;max-width:40ch">Cuerpo de texto en columnas estrechas, con interlineado generoso para una lectura fluida.</p></div>
-            <div class="lib-type-row__spec"><b>Cuerpo</b><span>400 · line-height 1.6 · columnas estrechas</span></div>
+            <div class="lib-type-row__sample"><span style="font-size:1.15rem;font-weight:700;letter-spacing:-.02em">Subtítulo 3</span></div>
+            <div class="lib-type-row__spec"><b>Subtítulo 3</b><span>Bold 700 · ~1.15rem</span></div>
+          </div>
+          <div class="lib-type-row">
+            <div class="lib-type-row__sample"><p style="font-size:clamp(.95rem,1.5vw,1.2rem);line-height:1.5;max-width:34ch">Nota técnica destacada (como la del equipo).</p></div>
+            <div class="lib-type-row__spec"><b>Nota 2</b><span>Regular 400 · clamp(.95rem, 1.5vw, 1.2rem)</span></div>
+          </div>
+          <div class="lib-type-row">
+            <div class="lib-type-row__sample"><p style="font-size:.68rem;line-height:1.55;max-width:52ch;opacity:.72">Nota técnica breve, tipo acotación (como la del tap tone).</p></div>
+            <div class="lib-type-row__spec"><b>Nota 1</b><span>Regular 400 · ~.68rem</span></div>
+          </div>
+          <div class="lib-type-row">
+            <div class="lib-type-row__sample"><p style="font-size:.98rem;line-height:1.5;max-width:42ch">Cuerpo de texto principal de la página</p></div>
+            <div class="lib-type-row__spec"><b>Cuerpo 1</b><span>Regular 400 · ~.98rem</span></div>
+          </div>
+          <div class="lib-type-row">
+            <div class="lib-type-row__sample"><p style="font-size:.85rem;line-height:1.5;max-width:46ch;opacity:.82">Cuerpo secundario, más chico, para listas y detalles.</p></div>
+            <div class="lib-type-row__spec"><b>Cuerpo 2</b><span>Regular 400 · ~.85rem</span></div>
+          </div>
+          <div class="lib-type-row">
+            <div class="lib-type-row__sample"><span style="font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;opacity:.7">Micro texto</span></div>
+            <div class="lib-type-row__spec"><b>Micro</b><span>Regular 400 · ~.58rem</span></div>
           </div>
           <div class="lib-type-row">
             <div class="lib-type-row__sample"><span class="tag">Etiqueta / Label</span></div>
-            <div class="lib-type-row__spec"><b>Labels</b><span>Mayúsculas · letter-spacing 0.14–0.18em · 0.6–0.7rem</span></div>
+            <div class="lib-type-row__spec"><b>Labels</b><span>Regular 400 · ~.68rem</span></div>
           </div>
         </div>
       </section>
@@ -176,12 +166,39 @@
         </div>
       </section>
 
+      <!-- ============ FORMA ============ -->
+      <section id="forma" class="lib-section">
+        <div class="lib-hdr">
+          <span class="tag tag--violet">01 · Fundamentos</span>
+          <h2 class="section-title">Forma.</h2>
+          <p class="lib-hdr__desc">Radios usados en los componentes de TRASTES.</p>
+        </div>
+        <div class="lib-radius-grid">
+          <div class="lib-radius-card" style="--shape-radius:2px">
+            <b>2px</b>
+            <span>Botones / CTAs</span>
+          </div>
+          <div class="lib-radius-card" style="--shape-radius:2px">
+            <b>2px</b>
+            <span>Inputs</span>
+          </div>
+          <div class="lib-radius-card" style="--shape-radius:0">
+            <b>0px</b>
+            <span>Cards</span>
+          </div>
+          <div class="lib-radius-card lib-radius-card--circle" style="--shape-radius:50%">
+            <b>50%</b>
+            <span>Botones circulares</span>
+          </div>
+        </div>
+      </section>
+
       <!-- ============ ELEMENTOS GRÁFICOS ============ -->
       <section id="graficos" class="lib-section">
         <div class="lib-hdr">
           <span class="tag tag--violet">01 · Fundamentos</span>
           <h2 class="section-title">Elementos<br /><em>gráficos</em>.</h2>
-          <p class="lib-hdr__desc">Lenguaje de plano técnico (blueprint): cotas, curvas concéntricas de frecuencia, nodos y numeración. Nunca motivos botánicos.</p>
+          <p class="lib-hdr__desc">Lenguaje de plano técnico (blueprint): cotas, curvas concéntricas de frecuencia, nodos y numeración.</p>
         </div>
         <div class="lib-demo lib-demo--split">
           <div class="lib-demo__stage" style="background:#2a1005;min-height:220px;position:relative;overflow:hidden">
@@ -211,7 +228,6 @@
             </svg>
           </div>
         </div>
-        <p class="lib-caption">Izq.: overlay de frecuencia sobre foto (líneas crema, blend screen). Der.: croquis de cotas con nodos violeta y numeración naranja.</p>
       </section>
 
       <!-- ============ BOTONES ============ -->
@@ -226,185 +242,35 @@
             <a class="btn btn--accent">Primario · acento</a>
             <a class="btn btn--ghost">Fantasma</a>
             <a class="btn btn--dark">Oscuro</a>
-          </div>
-          <div class="lib-code">
-            <code>&lt;a class="btn btn--accent"&gt;…&lt;/a&gt;</code>
-            <button class="lib-copy" data-copy='<a class="btn btn--accent">…</a>'>copiar</button>
-          </div>
-        </div>
-        <div class="lib-demo">
-          <div class="lib-demo__stage lib-demo__stage--row" style="background:#2a1005">
-            <span class="btn btn--soon">Próximamente · acceso</span>
-          </div>
-          <p class="lib-caption"><code>.btn--soon</code> · para bloques sobre fondo espresso (VIP).</p>
-        </div>
-      </section>
-
-      <!-- ============ ETIQUETAS ============ -->
-      <section id="tags" class="lib-section">
-        <div class="lib-hdr">
-          <span class="tag tag--violet">02 · Componentes</span>
-          <h2 class="section-title">Etiquetas.</h2>
-          <p class="lib-hdr__desc">Rótulos de sección y categorías técnicas. Se ajustan a su contenido (no se estiran).</p>
-        </div>
-        <div class="lib-demo">
-          <div class="lib-demo__stage lib-demo__stage--row">
-            <span class="tag">Etiqueta base</span>
-            <span class="tag tag--violet">01 / Etiqueta técnica</span>
-          </div>
-          <div class="lib-code">
-            <code>&lt;span class="tag tag--violet"&gt;01 / …&lt;/span&gt;</code>
-            <button class="lib-copy" data-copy='<span class="tag tag--violet">01 / …</span>'>copiar</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ TARJETAS ============ -->
-      <section id="cards" class="lib-section">
-        <div class="lib-hdr">
-          <span class="tag tag--violet">02 · Componentes</span>
-          <h2 class="section-title">Tarjetas.</h2>
-          <p class="lib-hdr__desc">Beneficio (subrayado animado al hover), curso (se eleva con destello) y reseña (nota técnica).</p>
-        </div>
-
-        <div class="lib-demo">
-          <div class="lib-demo__stage">
-            <article class="benefit" style="border:.5px solid var(--line);max-width:280px">
-              <span class="benefit__num">01</span>
-              <h3>Calibración Armónica</h3>
-              <p>Pasá el cursor: el título se subraya en violeta desde la izquierda.</p>
-            </article>
-          </div>
-          <p class="lib-caption"><code>.benefit</code> · hover → subrayado <b>violeta</b> animado (background-size).</p>
-        </div>
-
-        <div class="lib-demo">
-          <div class="lib-demo__stage" style="padding:2.5rem 1.6rem">
-            <article class="course" style="max-width:280px">
-              <div class="course__img course__img--criolla"></div>
-              <h3>Construcción de Guitarra Criolla</h3>
-              <p class="course__lead">Pasá el cursor: la tarjeta se eleva con destello naranja.</p>
-              <ul class="course__meta">
-                <li><span>Nivel</span><b class="course__level">Básico</b></li>
-                <li><span>Precio</span><b class="course__price">USD 750</b></li>
-              </ul>
-            </article>
-          </div>
-          <p class="lib-caption"><code>.course</code> · hover → <b>translateY</b> + glow naranja + subrayado marrón del título.</p>
-        </div>
-      </section>
-
-      <!-- ============ FORMULARIOS ============ -->
-      <section id="formularios" class="lib-section">
-        <div class="lib-hdr">
-          <span class="tag tag--violet">02 · Componentes</span>
-          <h2 class="section-title">Formularios.</h2>
-          <p class="lib-hdr__desc">Inputs, select y textarea con foco en naranja. Newsletter compacto del footer.</p>
-        </div>
-        <div class="lib-demo">
-          <div class="lib-demo__stage">
-            <form class="dform" style="max-width:340px" onsubmit="return false">
-              <label>Campo de texto
-                <input type="text" placeholder="Nombre y apellidos" />
-              </label>
-              <label>Selector
-                <select><option>Guitarra clásica</option><option>Violín de concierto</option></select>
-              </label>
-            </form>
-          </div>
-        </div>
-        <div class="lib-demo">
-          <div class="lib-demo__stage" style="max-width:280px">
-            <form class="news" onsubmit="return false">
-              <input type="email" placeholder="tu correo" aria-label="correo" />
-              <button type="submit" aria-label="Suscribirse">→</button>
-            </form>
-          </div>
-          <p class="lib-caption"><code>.news</code> · suscripción a la bitácora.</p>
-        </div>
-      </section>
-
-      <!-- ============ ACORDEÓN ============ -->
-      <section id="acordeon" class="lib-section">
-        <div class="lib-hdr">
-          <span class="tag tag--violet">02 · Componentes</span>
-          <h2 class="section-title">Acordeón.</h2>
-          <p class="lib-hdr__desc">FAQ y temarios. Hacé clic para abrir/cerrar (el ícono + rota a ×).</p>
-        </div>
-        <div class="lib-demo">
-          <div class="lib-demo__stage" style="padding:0">
-            <div class="faq__list" style="border:.5px solid var(--line)">
-              <div class="qa">
-                <button class="qa__q" aria-expanded="false"><span>¿Cómo funciona este componente?</span><span class="qa__icon">+</span></button>
-                <div class="qa__a"><p>Al hacer clic se despliega el panel con una transición de altura suave. El ícono “+” gira 45° y se vuelve naranja.</p></div>
-              </div>
-              <div class="qa">
-                <button class="qa__q" aria-expanded="false"><span>¿Se puede abrir más de uno?</span><span class="qa__icon">+</span></button>
-                <div class="qa__a"><p>Sí: cada ítem es independiente (a diferencia del acordeón de servicios, que es exclusivo).</p></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ NAVEGACIÓN ============ -->
-      <section id="navegacion" class="lib-section">
-        <div class="lib-hdr">
-          <span class="tag tag--violet">02 · Componentes</span>
-          <h2 class="section-title">Navegación.</h2>
-          <p class="lib-hdr__desc">Barra fija translúcida con enlaces subrayados al hover y CTA en borde naranja.</p>
-        </div>
-        <div class="lib-demo">
-          <div class="lib-demo__stage" style="padding:0">
-            <div class="lib-navsample">
-              <span class="lib-navsample__brand">TRASTES<span>®</span></span>
-              <nav class="lib-navsample__links">
-                <a href="#navegacion">Servicios</a><a href="#navegacion">Proceso</a><a href="#navegacion">Maderas</a>
-              </nav>
-              <span class="nav__cta">Consulta →</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ MODAL ============ -->
-      <section id="modal" class="lib-section">
-        <div class="lib-hdr">
-          <span class="tag tag--violet">02 · Componentes</span>
-          <h2 class="section-title">Modal.</h2>
-          <p class="lib-hdr__desc">Ventana de co-creación. Se abre con backdrop desenfocado y cierra con ×, clic afuera o Esc.</p>
-        </div>
-        <div class="lib-demo">
-          <div class="lib-demo__stage lib-demo__stage--row">
-            <button class="btn btn--dark" id="libOpenModal">Abrir modal de ejemplo →</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ REPRODUCTOR ============ -->
-      <section id="audio" class="lib-section">
-        <div class="lib-hdr">
-          <span class="tag tag--violet">02 · Componentes</span>
-          <h2 class="section-title">Reproductor.</h2>
-          <p class="lib-hdr__desc">Player minimalista con onda animada. Hacé clic en ▶ para ver la animación.</p>
-        </div>
-        <div class="lib-demo">
-          <div class="lib-demo__stage" style="background:#2a1005">
             <div class="mock mock--audio" id="libAudio" style="max-width:320px">
               <button class="mock__play" aria-label="Reproducir">▶</button>
               <div class="mock__wave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
               <small>tap_tone_tapa.mp3</small>
             </div>
+            <button class="cd-kit__hotspot" style="position:static;transform:none" aria-expanded="false" aria-label="Punto interactivo (hotspot)">
+              <span class="cd-kit__plus" aria-hidden="true">+</span>
+            </button>
+            <button class="gallery__zoom" style="position:static" aria-label="Ver imagen completa">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="4 9 4 4 9 4"/><line x1="4" y1="4" x2="10" y2="10"/>
+                <polyline points="15 4 20 4 20 9"/><line x1="20" y1="4" x2="14" y2="10"/>
+                <polyline points="4 15 4 20 9 20"/><line x1="4" y1="20" x2="10" y2="14"/>
+                <polyline points="20 15 20 20 15 20"/><line x1="20" y1="20" x2="14" y2="14"/>
+              </svg>
+            </button>
           </div>
         </div>
-      </section>
-
-      <!-- ============ FLIP-CARD ============ -->
-      <section id="flip" class="lib-section">
-        <div class="lib-hdr">
-          <span class="tag tag--violet">02 · Componentes</span>
-          <h2 class="section-title">Flip-card.</h2>
-          <p class="lib-hdr__desc">Tarjeta que gira en 3D al tocarla (usada en el selector de maderas). Hacé clic para girar.</p>
+        <div class="lib-demo">
+          <div class="faq__list" style="border:.5px solid var(--line);border-bottom:none">
+            <div class="qa">
+              <button class="qa__q" aria-expanded="false"><span>¿Cómo funciona este componente?</span><span class="qa__icon">+</span></button>
+              <div class="qa__a"><p>Al hacer clic se despliega el panel con una transición de altura suave. El ícono “+” gira 45° y se vuelve naranja.</p></div>
+            </div>
+            <div class="qa">
+              <button class="qa__q" aria-expanded="false"><span>¿Se puede abrir más de uno?</span><span class="qa__icon">+</span></button>
+              <div class="qa__a"><p>En la FAQ, sí: cada ítem es independiente. El temario del curso, en cambio, es exclusivo (al abrir una celda se cierran las demás).</p></div>
+            </div>
+          </div>
         </div>
         <div class="lib-demo">
           <div class="lib-demo__stage">
@@ -418,6 +284,82 @@
           </div>
         </div>
       </section>
+
+      <!-- ============ TARJETAS ============ -->
+      <section id="cards" class="lib-section">
+        <div class="lib-hdr">
+          <span class="tag tag--violet">02 · Componentes</span>
+          <h2 class="section-title">Tarjetas.</h2>
+        </div>
+
+        <div class="lib-demo">
+          <div class="lib-demo__stage" style="align-items:flex-start;gap:1.6rem">
+            <article class="course" style="max-width:280px">
+              <svg class="course__frame" aria-hidden="true"><rect pathLength="100" x="0" y="0" width="100%" height="100%"/></svg>
+              <div class="course__img" style="background:linear-gradient(100deg,#8a4a15,#c98330 40%,#e0a54a 60%,#9a5a1e)"></div>
+              <h3>Titulo bold con hover subrayado</h3>
+              <p class="course__lead">Bajada regular con una breve descripción de ejemplo.</p>
+              <ul class="course__meta">
+                <li><span>Nivel</span><b class="course__level">Bold</b></li>
+                <li><span>Duración</span><b>Bold</b></li>
+              </ul>
+              <div class="course__price">PRECIO</div>
+              <a class="course__btn">botón</a>
+            </article>
+            <article class="benefit" style="border:.5px solid var(--line);background:var(--cream);max-width:280px">
+              <div class="benefit__mid">
+                <h3>Titulo bold con hover subrayado</h3>
+                <p>Bajada regular con una breve descripción de ejemplo.</p>
+              </div>
+              <div class="benefit__data">
+                <span class="benefit__k">Dato técnico</span>
+                <b>±0,1 mm</b>
+              </div>
+            </article>
+            <article class="frame" style="border:.5px solid var(--line);background:var(--cream)">
+              <div class="ph" style="aspect-ratio:4/3;background:linear-gradient(100deg,#8a4a15,#c98330 40%,#e0a54a 60%,#9a5a1e)"></div>
+              <span class="frame__step">Paso 01</span>
+              <h3 style="white-space:nowrap;font-size:1.05rem">Titulo bold sin hover subrayado</h3>
+              <p>Bajada regular con una breve descripción de ejemplo</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FORMULARIOS ============ -->
+      <section id="formularios" class="lib-section">
+        <div class="lib-hdr">
+          <span class="tag tag--violet">02 · Componentes</span>
+          <h2 class="section-title">Formularios.</h2>
+          <p class="lib-hdr__desc">Formularios de contacto e inscripción. Inputs, textarea y select con foco en naranja.</p>
+        </div>
+        <div class="lib-demo">
+          <div class="lib-demo__stage">
+            <div class="dform dform--grid">
+              <label>Tu nombre
+                <input type="text" placeholder="Nombre y apellidos" />
+              </label>
+              <label>Correo de contacto
+                <input type="email" placeholder="correo@ejemplo.com" />
+              </label>
+              <label>Teléfono / WhatsApp
+                <input type="tel" placeholder="+54 ..." />
+              </label>
+              <label>Contanos tu experiencia (opcional)
+                <textarea rows="1" placeholder="Toco la guitarra hace… / Nunca construí nada…"></textarea>
+              </label>
+              <div class="dform__news">
+                <span>La correspondencia</span>
+                <form class="news" onsubmit="return false">
+                  <input type="email" placeholder="tu correo" aria-label="correo" />
+                  <button type="submit" aria-label="Suscribirse">→</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       <!-- ============ NOTA TÉCNICA ============ -->
       <section id="nota" class="lib-section">
@@ -447,7 +389,7 @@
         <div class="lib-hdr">
           <span class="tag tag--violet">03 · Sistema</span>
           <h2 class="section-title">Estados e<br /><em>interacciones</em>.</h2>
-          <p class="lib-hdr__desc">Todas las transiciones usan <code>--ease</code> (0.3–0.7s). Ejemplos vivos:</p>
+          <p class="lib-hdr__desc">Todas las transiciones usan <code>--ease</code> (0.3–0.7s). Ejemplos:</p>
         </div>
         <div class="lib-states">
           <div class="lib-state"><a class="btn btn--accent">Hover</a><span>Invierte a espresso</span></div>
@@ -457,53 +399,11 @@
         </div>
       </section>
 
-      <!-- ============ VOZ Y PATRONES ============ -->
-      <section id="patrones" class="lib-section">
-        <div class="lib-hdr">
-          <span class="tag tag--violet">03 · Sistema</span>
-          <h2 class="section-title">Voz y<br /><em>patrones</em>.</h2>
-          <p class="lib-hdr__desc">Reglas de contenido y de aplicación visual.</p>
-        </div>
-        <div class="lib-dodont">
-          <div class="lib-do">
-            <span class="lib-dodont__tag lib-dodont__tag--do">Hacer</span>
-            <ul>
-              <li>Tutear en <b>voseo</b> ("construí", "reservá tu cupo").</li>
-              <li>Acentuar una palabra clave del título en <em>naranja</em> + punto marrón final.</li>
-              <li>Fotos cálidas de taller; imágenes recortadas con <code>cover</code>.</li>
-              <li>Separar bloques con líneas de 0.5px; retículas asimétricas.</li>
-            </ul>
-          </div>
-          <div class="lib-dont">
-            <span class="lib-dodont__tag lib-dodont__tag--dont">Evitar</span>
-            <ul>
-              <li>Negro puro (usar Espresso <code>#2A1005</code>).</li>
-              <li>Motivos decorativos botánicos o florales.</li>
-              <li>Estirar las etiquetas a todo el ancho del contenedor.</li>
-              <li>Mezclar "usted" con el voseo.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
     </main>
-  </div>
 
   <!-- ===================== TOAST ===================== -->
   <div class="lib-toast" id="toast" role="status" aria-live="polite">Copiado ✓</div>
 
-  <!-- ===================== MODAL DEMO ===================== -->
-  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="libModalTitle">
-    <div class="modal__backdrop" data-close></div>
-    <div class="modal__card">
-      <button class="modal__x" data-close aria-label="Cerrar">×</button>
-      <span class="tag tag--violet">Componente · Modal</span>
-      <h3 id="libModalTitle">Modal de ejemplo</h3>
-      <p style="font-size:.9rem;opacity:.85">Fondo con desenfoque, tarjeta con animación de entrada. Cerralo con ×, haciendo clic afuera o con la tecla Esc.</p>
-      <button class="btn btn--accent" data-close>Entendido</button>
-    </div>
-  </div>
-
-  <script src="js/biblioteca.js"></script>
+  <script src="js/biblioteca.js?v=4"></script>
 </body>
 </html>

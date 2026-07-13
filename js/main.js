@@ -338,7 +338,7 @@
   const revNote  = $("#revNote");
   const revCarousel = $("#revCarousel");
   if (revTrack && revNote && revCarousel) {
-    let revActive = 2; // card central inicial
+    let revActive = 0; // card inicial: Nadia Ferrán
 
     // construir cards
     REVIEWS.forEach((r, i) => {
@@ -544,6 +544,49 @@
       e.preventDefault();
       newsMsg.textContent = "✓ Suscripción registrada. Recibirás la bitácora del luthier.";
       newsForm.reset();
+    });
+  }
+
+  /* ---------- Galería · botón "+" + lightbox ---------- */
+  const galleryItems = $$(".gallery__item");
+  const lightbox = $("#lightbox");
+  const lightboxImg = $("#lightboxImg");
+  if (galleryItems.length && lightbox && lightboxImg) {
+    const openLightbox = (src, alt) => {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || "";
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    };
+    const closeLightbox = () => {
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      lightboxImg.src = "";
+    };
+    // inyectar el botón "+" en cada imagen
+    galleryItems.forEach(item => {
+      const img = $("img", item);
+      if (!img) return;
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "gallery__zoom";
+      btn.setAttribute("aria-label", "Ver imagen completa");
+      btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="4 9 4 4 9 4"/><line x1="4" y1="4" x2="10" y2="10"/>
+        <polyline points="15 4 20 4 20 9"/><line x1="20" y1="4" x2="14" y2="10"/>
+        <polyline points="4 15 4 20 9 20"/><line x1="4" y1="20" x2="10" y2="14"/>
+        <polyline points="20 15 20 20 15 20"/><line x1="20" y1="20" x2="14" y2="14"/>
+      </svg>`;
+      btn.addEventListener("click", () => openLightbox(img.src, img.alt));
+      item.appendChild(btn);
+    });
+    // cerrar: botón ×, click en el fondo, tecla Esc
+    $$("[data-close]", lightbox).forEach(el => el.addEventListener("click", closeLightbox));
+    lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && lightbox.classList.contains("is-open")) closeLightbox();
     });
   }
 
