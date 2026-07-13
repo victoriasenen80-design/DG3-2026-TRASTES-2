@@ -376,7 +376,7 @@
   .cd-tool__imgwrap,.cd-tool__img{width:100%}
   .cd-includes__list{column-count:1}
   .cd-audience__grid{grid-template-columns:1fr}
-  .cd-audience__head{border-right:none;border-bottom:.5px solid var(--line);padding-top:4rem;padding-bottom:2.2rem;gap:2.2rem}
+  .cd-audience__head{border-right:none;border-bottom:none;padding-top:4rem;padding-bottom:.3rem;gap:2.2rem}
   .cd-fit-list{grid-template-columns:1fr;grid-template-rows:none;grid-auto-rows:1fr;padding-bottom:0}
   .cd-fit{min-height:350px}
   .cd-audience{padding-bottom:4rem} /* aire inferior de la sección, no de la última card */
